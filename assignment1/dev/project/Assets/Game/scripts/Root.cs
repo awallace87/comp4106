@@ -7,6 +7,7 @@ public class Root : ContextView
 {
     void Awake()
     {
-        context = new MainContext(this);    
+        context = new MainContext(this);
+
     }
 }

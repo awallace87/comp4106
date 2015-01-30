@@ -1,0 +1,29 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Game/scripts/model/DefaultGridManager.cs">
+    <Files>
+      <File FileName="Assets/Game/scripts/MainContext.cs" Line="12" Column="1" />
+      <File FileName="Assets/Game/scripts/model/DefaultSnakeModel.cs" Line="22" Column="3" />
+      <File FileName="Assets/Game/scripts/command/GameStartCommand.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/scripts/command/CreateSnakeCommand.cs" Line="18" Column="37" />
+      <File FileName="Assets/Game/scripts/model/ISnakeModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/scripts/signal/GridObjectSignals.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/scripts/model/IGridObject.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/scripts/view/SnakeView.cs" Line="17" Column="92" />
+      <File FileName="Assets/Game/scripts/view/SnakeMediator.cs" Line="6" Column="2" />
+      <File FileName="Assets/Game/scripts/model/IGrid.cs" Line="6" Column="26" />
+      <File FileName="Assets/Game/scripts/model/GridPosition.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/scripts/model/IGridManager.cs" Line="12" Column="22" />
+      <File FileName="Assets/Game/scripts/model/DefaultGridManager.cs" Line="37" Column="51" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Development/Github/comp4106/assignment1/dev/project/Assets/Game/scripts/model/DefaultSnakeModel.cs" line="31" />
+      <Breakpoint file="/Development/Github/comp4106/assignment1/dev/project/Assets/Game/scripts/view/SnakeMediator.cs" line="16" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Assets/Game/scripts/model/DefaultSnakeModel.cs" line="31" offsetX="261" offsetY="450" expression="value" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+</Properties>

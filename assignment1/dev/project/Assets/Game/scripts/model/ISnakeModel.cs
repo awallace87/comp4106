@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface ISnakeModel {
-    
+public interface ISnakeModel : IGridObject{
+	void Move();
 }

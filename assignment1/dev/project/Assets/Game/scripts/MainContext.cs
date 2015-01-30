@@ -18,5 +18,25 @@ public class MainContext : SignalContext
     {
         Debug.Log("MapBindings Begin");
 
+		mediationBinder.Bind<SnakeView> ().To<SnakeMediator> ();
+
+		injectionBinder.Bind<IGridManager> ().To<DefaultGridManager> ().ToSingleton ();
+		injectionBinder.Bind<IGrid> ().To<DefaultGrid> ();
+
+		injectionBinder.Bind<ISnakeModel> ().To<DefaultSnakeModel> ();
+
+		commandBinder.Bind<GameStartSignal> ().To<GameStartCommand> ().To<CreateSnakeCommand>().InSequence().Once ();
     }
+
+	void mapConfigurationBindings()
+	{
+	}
+
+	public override IContext Start ()
+	{
+		base.Start ();
+		GameStartSignal startSignal = (GameStartSignal)injectionBinder.GetInstance<GameStartSignal> ();
+		startSignal.Dispatch ();
+		return this;
+	}
 }
