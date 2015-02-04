@@ -18,7 +18,7 @@ public class MoveSnakeCommand : Command
     {
         //TODO: Add Exception for Invalid Move
         //Get Updated Position
-        Debug.Log("MoveSnakeCommand::Execute");
+        //Debug.Log("MoveSnakeCommand::Execute");
         snakeModel = gridManager.GetObjectByID(modelID) as ISnakeModel;
         GridPosition nextPosition = snakeModel.Position.GetPositionInDirection(snakeModel.Direction);
 
@@ -50,7 +50,7 @@ public class MoveSnakeCommand : Command
                 }
                 break;
         }
-        Debug.Log("MoveSnakeCommand::Execute End");
+        //Debug.Log("MoveSnakeCommand::Execute End");
     }
 
     void MoveSnake(GridPosition position)
@@ -58,8 +58,8 @@ public class MoveSnakeCommand : Command
         //Debug.Log("Move Snake Position");
         gridManager.Grid.Map[snakeModel.Position.X, snakeModel.Position.Y] = GridObjectType.Empty;
         snakeModel.Position = position;
+
         gridManager.Grid.Map[snakeModel.Position.X, snakeModel.Position.Y] = snakeModel.GetGridObjectType();
-        snakeModel.Position = position;
         //TODO Check non-existent mediator
         viewManager.GetMediatorMoveSignal(modelID).Dispatch(position);
 

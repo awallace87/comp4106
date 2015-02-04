@@ -12,7 +12,7 @@ public class MoveAllSnakesCommand : Command
     public MoveSnakeSignal moveSignal { get; set; }
     public override void Execute()
     {
-        Debug.Log("MoveAllSnakesCommand::Execute");
+        //Debug.Log("MoveAllSnakesCommand::Execute");
 
         //Find and Move Snakes
         List<uint> snakeIds = gridManager.GetIDsOfType(GridObjectType.SnakeHead);

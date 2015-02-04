@@ -40,17 +40,24 @@ public class UpdateSnakeDirectionCommand : Command
         while (dfsStack.Count > 0)
         {
             GridPosition positionPushed = dfsStack.Pop() as GridPosition;
+            //Debug.Log("Checking Position - " + positionPushed.X.ToString() + "," + positionPushed.Y.ToString());
             if (positionPushed.Equals(snakeModel.Position))
             {
-                Debug.Log("Search: Found Snake");
+                Debug.Log("Snake Found");
                 break;
             }
             List<GridPosition> adjacentPositions = getAdjacentPositions(positionPushed);
             foreach (GridPosition adjacent in adjacentPositions)
             {
-                isVisited[adjacent.X, adjacent.Y] = true;
-                distance[adjacent.X, adjacent.Y] = distance[positionPushed.X, positionPushed.Y] + 1;
-                dfsStack.Push(adjacent);
+                if (!isVisited[adjacent.X, adjacent.Y])
+                {
+                    isVisited[adjacent.X, adjacent.Y] = true;
+                    if (gridManager.Grid.Map[adjacent.X, adjacent.Y] == GridObjectType.Empty)
+                    {
+                        distance[adjacent.X, adjacent.Y] = distance[positionPushed.X, positionPushed.Y] + 1;
+                    }
+                    dfsStack.Push(adjacent);
+                }
             }
         }
         GridDirection bestSnakeDirection = GetBestDirection(snakeModel.Position);
@@ -64,7 +71,7 @@ public class UpdateSnakeDirectionCommand : Command
     {
         uint minDistance = uint.MaxValue;
         GridDirection minDirection = GridDirection.Invalid;
-        for (int i = (int)GridDirection.ValidDirectionStart; i < (int)GridDirection.ValidDirectionEnd; i++)
+        for (int i = (int)GridDirection.ValidDirectionStart; i <= (int)GridDirection.ValidDirectionEnd; i++)
         {
             GridPosition directPosition = position.GetPositionInDirection((GridDirection)i);
             uint positionDistance = distance[directPosition.X, directPosition.Y];
@@ -80,14 +87,16 @@ public class UpdateSnakeDirectionCommand : Command
     List<GridPosition> getAdjacentPositions(GridPosition position)
     {
         List<GridPosition> adjacentPositions = new List<GridPosition>();
-        for (int i = (int)GridDirection.ValidDirectionStart; i < (int)GridDirection.ValidDirectionEnd; i++)
+        for (int i = (int)GridDirection.ValidDirectionStart; i <= (int)GridDirection.ValidDirectionEnd; i++)
         {
+            //Debug.Log("adjacent position loop - " + i.ToString());
             GridPosition directionPosition = position.GetPositionInDirection((GridDirection)i);
-            if (isValidPosition(directionPosition))
+            if (gridManager.IsValidPosition(directionPosition))
             {
                 adjacentPositions.Add(directionPosition);
             }
         }
+        //Debug.Log("Adjacent Positions Count - " + adjacentPositions.Count.ToString());
         return adjacentPositions;
     }
 

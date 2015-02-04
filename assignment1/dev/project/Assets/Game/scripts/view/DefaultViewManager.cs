@@ -15,21 +15,21 @@ public class DefaultViewManager : IViewManager {
 
     public Signal<GridPosition> GetMediatorMoveSignal(uint id)
     {
-        Debug.Log("GetMediatorByID()");
+        //Debug.Log("GetMediatorByID()");
 
         return gridMediators[id];
     }
 
     public void AddMediatorMoveSignal(Signal<GridPosition> mediatorSignal, uint id)
     {
-        Debug.Log("AddMediatorByID()");
+        //Debug.Log("AddMediatorByID()");
 
         gridMediators.Add(id, mediatorSignal);
     }
 
     public void RemoveMediatorMoveSignal(uint id)
     {
-        Debug.Log("RemoveMediatorByID()");
+        //Debug.Log("RemoveMediatorByID()");
 
         gridMediators.Remove(id);
     }
