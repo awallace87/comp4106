@@ -7,15 +7,17 @@ public class CreateSnakeCommand : Command {
 	[Inject]
 	public IGridManager gridManager { get; set; }
 
+    [Inject]
+    public UpdateSnakeDirectionSignal updateDirectionSignal { get; set; }
 
 	public override void Execute ()
 	{
 		Debug.Log ("CreateSnakeCommand::Execute");
 
 		ISnakeModel snake = injectionBinder.GetInstance<ISnakeModel> ();
-		snake.Position = getSnakeStartPosition ();
+        snake.Position = GetSnakeStartingPosition();
 
-		gridManager.AddGridObject (snake);
+        updateDirectionSignal.Dispatch(snake.GetID());
 
 		//Create Snake View
 		GameObject snakeObject = new GameObject("snake");
@@ -25,13 +27,24 @@ public class CreateSnakeCommand : Command {
 		snakeView.ModelID = snake.GetID ();
 	}
 
-	GridPosition getSnakeStartPosition() {
-		//Start Snake in middle of grid
-		uint x = gridManager.GetGridWidth () / 2;
-		uint y = gridManager.GetGridHeight () / 2;
+    GridPosition GetSnakeStartingPosition() 
+    {
+        bool foundUnoccupiedPosition = false;
+        GridPosition startPosition = new GridPosition(gridManager.Grid.Width / 2, gridManager.Grid.Height / 2);
+        while (!foundUnoccupiedPosition)
+        {
+            uint minX, maxX, minY, maxY;
+            minX = (uint)(gridManager.Grid.Width * 0.25);
+            maxX = (uint)(gridManager.Grid.Width * 0.75);
+            minY = (uint)(gridManager.Grid.Height * 0.25);
+            maxY = (uint)(gridManager.Grid.Height * 0.75);
+            uint xPosition = (uint)Random.Range(minX, maxX);
+            uint yPosition = (uint)Random.Range(minY, maxY);
 
-		GridPosition center = new GridPosition (x, y);
-		return center;
-	}
+            startPosition = new GridPosition(xPosition, yPosition);
 
+            foundUnoccupiedPosition = gridManager.Grid.Map[xPosition, yPosition] == GridObjectType.Empty;
+        }
+        return startPosition;
+    }
 }

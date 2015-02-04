@@ -17,20 +17,50 @@ public class MainContext : SignalContext
     protected override void mapBindings()
     {
         Debug.Log("MapBindings Begin");
-
-		mediationBinder.Bind<SnakeView> ().To<SnakeMediator> ();
-
-		injectionBinder.Bind<IGridManager> ().To<DefaultGridManager> ().ToSingleton ();
-		injectionBinder.Bind<IGrid> ().To<DefaultGrid> ();
-
-		injectionBinder.Bind<ISnakeModel> ().To<DefaultSnakeModel> ();
-
-		commandBinder.Bind<GameStartSignal> ().To<GameStartCommand> ().To<CreateSnakeCommand>().InSequence().Once ();
+        mapMediationBindings();
+        mapInjectionBindings();
+        mapCommandBindings();
     }
 
 	void mapConfigurationBindings()
 	{
 	}
+
+    void mapMediationBindings()
+    {
+        mediationBinder.Bind<SnakeView>().To<SnakeMediator>();
+        mediationBinder.Bind<FoodView>().To<FoodMediator>();
+    }
+
+    void mapInjectionBindings()
+    {
+        injectionBinder.Bind<IGridManager>().To<DefaultGridManager>().ToSingleton();
+        injectionBinder.Bind<IViewManager>().To<DefaultViewManager>().ToSingleton();
+        injectionBinder.Bind<IUpdateManager>().To<DefaultUpdateManager>().ToSingleton();
+        
+        injectionBinder.Bind<IGrid>().To<DefaultGrid>();
+
+        injectionBinder.Bind<ISnakeModel>().To<DefaultSnakeModel>();
+        injectionBinder.Bind<IFoodModel>().To<DefaultFoodModel>();
+    }
+
+    void mapCommandBindings()
+    {
+        commandBinder.Bind<GameStartSignal>()
+            .InSequence()
+            .To<GameStartCommand>()
+            .To<AddFoodCommand>()
+            .To<CreateSnakeCommand>()
+            .Once();
+
+        commandBinder.Bind<GameEndSignal>().To<GameEndCommand>().Once();
+
+        commandBinder.Bind<MoveAllSnakesSignal>().To<MoveAllSnakesCommand>();
+        commandBinder.Bind<MoveSnakeSignal>().To<MoveSnakeCommand>();
+        commandBinder.Bind<UpdateSnakeDirectionSignal>().To<UpdateSnakeDirectionCommand>();
+        commandBinder.Bind<GridObjectMovedSignal>().To<CheckCollisionCommand>();
+        commandBinder.Bind<UpdateAllSnakesSignal>().To<UpdateAllSnakesCommand>();
+    }
 
 	public override IContext Start ()
 	{
@@ -39,4 +69,22 @@ public class MainContext : SignalContext
 		startSignal.Dispatch ();
 		return this;
 	}
+
+    public override void OnRemove()
+    {
+        EndGame();
+        base.OnRemove();
+    }
+
+    public void PauseGame()
+    {
+
+    }
+
+    public void EndGame() 
+    {
+        Debug.Log("OnRemove");
+        GameEndSignal endSignal = (GameEndSignal)injectionBinder.GetInstance<GameEndSignal>();
+        endSignal.Dispatch();
+    }
 }

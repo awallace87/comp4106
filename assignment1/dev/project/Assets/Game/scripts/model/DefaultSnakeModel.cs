@@ -3,46 +3,38 @@ using System.Collections;
 
 public class DefaultSnakeModel : ISnakeModel{
 
+    private GridDirection direction;
 	private GridPosition position;
 	private uint id;
 	
-	private GridObjectMovedSignal moveSignal;
-
-	[Inject]
-	public IGridManager manager { get; set; }
-
-	public DefaultSnakeModel()
+	public DefaultSnakeModel(IGridManager manager)
 	{
-		this.moveSignal = new GridObjectMovedSignal ();
-	}
-
-	//TODO - Switch to Constructor Injection
-	[PostConstruct]
-	void initialize() {
-		id = manager.GetNextGridObjectID ();
+        this.id = manager.GetNextGridObjectID();
+        manager.AddGridObject(this);
+        direction = GridDirection.Invalid;
 	}
 
 	#region IGridObject
 	public GridPosition Position {
-		get {
-			return position;
-		}
-		set {
-			position = value;
-			moveSignal.Dispatch (position);
-		}
+		get { return position; }
+		set 
+        { 
+            position = value;
+        }
 	}
 
-	public GridObjectMovedSignal MoveSignal {
-		get {
-			return moveSignal;
-		}
-	}
+    public GridDirection Direction
+    {
+        get { return direction; }
+        set { direction = value; }
+    }
 	
 	public uint GetID ()
 	{
 		return id;
 	}
+
+    public GridObjectType GetGridObjectType() { return GridObjectType.SnakeHead; }
 
 	#endregion
 
@@ -50,8 +42,10 @@ public class DefaultSnakeModel : ISnakeModel{
 
 	public void Move ()
 	{
-		moveSignal.Dispatch (position);
 	}
 
 	#endregion
+
+
+
 }

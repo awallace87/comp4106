@@ -54,11 +54,23 @@
     <Reference Include="UnityEditor">
       <HintPath>$(UnityPath)\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="TileSystem.Editor">
-      <HintPath>Assets\Rotorz\Tile System\Editor\TileSystem.Editor.dll</HintPath>
+    <Reference Include="NSubstitute">
+      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NSubstitute\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="TileSystem.Runtime">
-      <HintPath>Assets\Rotorz\Tile System\TileSystem.Runtime.dll</HintPath>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core">
+      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core.interfaces">
+      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.core.interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
@@ -78,24 +90,91 @@
       <Project>{76619906-8354-7292-B899-6DA50ADAC95C}</Project>
       <Name>UnityVS.project.CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="UnityVS.project.UnityScript.unityproj">
+      <Project>{F521EF41-C59A-2C05-7D71-47B90040EE2E}</Project>
+      <Name>UnityVS.project.UnityScript</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Rotorz\Tile System\Editor\RtsUnityIntegration.cs" />
-    <None Include="Assets\Rotorz\Tile System\!Readme.txt" />
-    <None Include="Assets\Rotorz\Tile System\Editor\TileSystem.Editor.xml" />
-    <None Include="Assets\Rotorz\Tile System\preset.default.xml" />
-    <None Include="Assets\Rotorz\Tile System\Shaders\AtlasOpaque.shader" />
-    <None Include="Assets\Rotorz\Tile System\Shaders\Preview.shader" />
-    <None Include="Assets\Rotorz\Tile System\Shaders\PreviewSeeThrough.shader" />
-    <None Include="Assets\Rotorz\Tile System\Support\Release Notes.txt" />
-    <None Include="Assets\Rotorz\Tile System\TileSystem.Runtime.xml" />
+    <Compile Include="Assets\Game\tests\Editor\GridManagerTest.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionComponentEditor.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionExplorerWindow.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionListRenderer.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionStripper.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\DropDownControl.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\GroupByComparerRenderer.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\GroupByExecutionMethodRenderer.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\GroupByGORenderer.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\GroupByNothingRenderer.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\GroupByTestsRenderer.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\PropertyPathSelector.cs" />
+    <Compile Include="Assets\UnityTestTools\Assertions\Editor\PropertyResolver.cs" />
+    <Compile Include="Assets\UnityTestTools\Common\Editor\Icons.cs" />
+    <Compile Include="Assets\UnityTestTools\Common\Editor\ProjectSettingsBase.cs" />
+    <Compile Include="Assets\UnityTestTools\Common\Editor\ResultWriter\ResultSummarizer.cs" />
+    <Compile Include="Assets\UnityTestTools\Common\Editor\ResultWriter\StackTraceFilter.cs" />
+    <Compile Include="Assets\UnityTestTools\Common\Editor\ResultWriter\XmlResultWriter.cs" />
+    <Compile Include="Assets\UnityTestTools\Common\Editor\Styles.cs" />
+    <Compile Include="Assets\UnityTestTools\Examples\UnitTestExamples\Editor\SampleTests.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Batch.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\IntegrationTestsRunnerSettings.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\IntegrationTestsRunnerWindow.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\NetworkResultsReceiver.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\PlatformRunner.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\PlatformRunnerConfiguration.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\PlatformRunnerSettings.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\PlatformRunnerSettingsWindow.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\PlayerSettingConfigurator.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\IntegrationTestGroupLine.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\IntegrationTestLine.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\IntegrationTestRendererBase.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\TestComponentEditor.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\Batch.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Renderer\GroupLine.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Renderer\RenderingOptions.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Renderer\TestLine.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Renderer\UnitTestRendererLine.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\BackgroundRunner.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\GuiHelper.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\ITestRunnerCallback.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\IUnitTestEngine.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\NUnitExtensions.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\NUnitTestEngine.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\TestRunner.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\TestRunnerCallbackList.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestInfo.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestResult.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestView.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\UnitTestsRunnerSettings.cs" />
+    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\UnityUnitTest.cs" />
     <None Include="Assets\StrangeIoC\examples\Assets\scripts\multiplecontexts\ReadMe.txt" />
     <None Include="Assets\StrangeIoC\examples\Assets\scripts\myfirstproject\ReadMe.txt" />
     <None Include="Assets\StrangeIoC\examples\Assets\scripts\signalsproject\ReadMe.txt" />
     <None Include="Assets\StrangeIoC\LICENSE-2.0.txt" />
     <None Include="Assets\StrangeIoC\README.txt" />
     <None Include="Assets\StrangeIoC\scripts\strange\extensions\ReadMe.txt" />
-    <None Include="Assets\Rotorz\Tile System\Editor\TileSystem.Editor.dll" />
+    <None Include="Assets\UnityTestTools\changelog.txt" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\AngryInclude.cginc" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\CharacterSelfIlluminationReflective.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\EnemySelfIlluminationReflective.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\Fallback.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\PlanarRealtimeReflection.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\ReflectiveBackgroundPlanar.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\SuperSimpleSelfIllumination.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\Additive.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\Cursor.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\LaserScope.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\Multiply.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleAdditive.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleAdditiveBlend.shader" />
+    <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleBlend.shader" />
+    <None Include="Assets\UnityTestTools\LICENSE.txt" />
+    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NSubstitute\NSubstitute.dll" />
+    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\Mono.Cecil.dll" />
+    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\Mono.Cecil.Mdb.dll" />
+    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.core.dll" />
+    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.core.interfaces.dll" />
+    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.framework.dll" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Messaging.dll" />
     <None Include="F:\Programming\Software\Unity4.3\MonoDevelop\Editor\Data\UnityExtensions\Unity\GUISystem\4.6.1\Editor\UnityEditor.UI.dll" />

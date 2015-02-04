@@ -6,18 +6,18 @@ public class DefaultGridManager : IGridManager {
 
 	private static uint GridObjectID = 0;
 
-	[Inject]
-	public IGrid Grid { get; set; }
+    private IGrid grid;
+
+    public IGrid Grid
+    {
+        get { return grid; }
+    }
 
 	private Dictionary<uint, IGridObject> gridObjects;
 
-	public DefaultGridManager() {
-		gridObjects = new Dictionary<uint, IGridObject> ();
-	}
-
-	[PostConstruct]
-	void initializeGrid()
-	{
+	public DefaultGridManager(IGrid grid) {
+        this.grid = grid;
+		this.gridObjects = new Dictionary<uint, IGridObject> ();
 	}
 
 	private uint getNextObjectId() 
@@ -25,20 +25,14 @@ public class DefaultGridManager : IGridManager {
 		return GridObjectID++;
 	}
 
+
 	#region IGridManager implementation
 	public IGridObject GetObjectByID (uint gridObjectId)
 	{
 		return gridObjects [gridObjectId];
 	}
 	
-
-	public GridPosition GetSnakeStartPosition ()
-	{
-		GridPosition startPosition = new GridPosition (0, 0);
-		return startPosition;
-	}
-	
-	void IGridManager.AddGridObject (IGridObject gridObject)
+	public void AddGridObject (IGridObject gridObject)
 	{
 		gridObjects.Add (gridObject.GetID (), gridObject);
 	}
@@ -47,17 +41,32 @@ public class DefaultGridManager : IGridManager {
 	{
 		return getNextObjectId();
 	}
-	
-	public uint GetGridHeight ()
-	{
-		return Grid.Height;
-	}
 
-	public uint GetGridWidth ()
-	{
-		return Grid.Width;
-	}
+    public List<uint> GetIDsOfType(GridObjectType gridObjectType)
+    {
+        List<uint> idList = new List<uint>();
+
+        foreach (KeyValuePair<uint, IGridObject> entry in gridObjects)
+        {
+            if (entry.Value.GetGridObjectType() == gridObjectType)
+            {
+                idList.Add(entry.Key);
+            }
+        }
+        return idList;
+    }
+
+    public bool IsValidPosition(GridPosition position)
+    {
+        return (position.X < grid.Width && position.Y < grid.Height);
+    }
 
 	#endregion
+
+
+
+
+
+
 
 }
