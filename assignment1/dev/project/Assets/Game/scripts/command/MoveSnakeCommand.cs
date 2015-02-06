@@ -19,7 +19,7 @@ public class MoveSnakeCommand : Command
         //TODO: Add Exception for Invalid Move
         //Get Updated Position
         //Debug.Log("MoveSnakeCommand::Execute");
-        snakeModel = gridManager.GetObjectByID(modelID) as ISnakeModel;
+        snakeModel = gridManager.GetGridObject(modelID) as ISnakeModel;
         GridPosition nextPosition = snakeModel.Position.GetPositionInDirection(snakeModel.Direction);
 
         if (!gridManager.IsValidPosition(nextPosition))
@@ -36,6 +36,8 @@ public class MoveSnakeCommand : Command
             case GridObjectType.Food:
                 {
                     //Eat Food
+                    EatFood(nextPosition);
+                    MoveSnake(nextPosition);
                 }
                 break;
             case GridObjectType.Empty:
@@ -61,7 +63,11 @@ public class MoveSnakeCommand : Command
 
         gridManager.Grid.Map[snakeModel.Position.X, snakeModel.Position.Y] = snakeModel.GetGridObjectType();
         //TODO Check non-existent mediator
-        viewManager.GetMediatorMoveSignal(modelID).Dispatch(position);
+        viewManager.GetMediator(modelID).ModelMovedSignal.Dispatch(position);
+    }
 
+    void EatFood(GridPosition foodPosition)
+    {
+        injectionBinder.GetInstance<EatFoodSignal>().Dispatch(foodPosition, modelID);
     }
 }

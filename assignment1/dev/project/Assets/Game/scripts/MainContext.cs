@@ -58,8 +58,13 @@ public class MainContext : SignalContext
         commandBinder.Bind<MoveAllSnakesSignal>().To<MoveAllSnakesCommand>();
         commandBinder.Bind<MoveSnakeSignal>().To<MoveSnakeCommand>();
         commandBinder.Bind<UpdateSnakeDirectionSignal>().To<UpdateSnakeDirectionCommand>();
-        commandBinder.Bind<GridObjectMovedSignal>().To<CheckCollisionCommand>();
         commandBinder.Bind<UpdateAllSnakesSignal>().To<UpdateAllSnakesCommand>();
+
+        commandBinder.Bind<EatFoodSignal>().To<EatFoodCommand>().To<AddFoodCommand>();
+
+        commandBinder.Bind<RemoveGridObjectSignal>().To<RemoveGridObjectCommand>();
+        //commandBinder.Bind<GridObjectMovedSignal>().To<CheckCollisionCommand>();
+
     }
 
 	public override IContext Start ()

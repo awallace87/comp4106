@@ -16,6 +16,8 @@ public class CreateSnakeCommand : Command {
 
 		ISnakeModel snake = injectionBinder.GetInstance<ISnakeModel> ();
         snake.Position = GetSnakeStartingPosition();
+        gridManager.AddGridObject(snake);
+        //gridManager.Grid.Map[snake.Position.X, snake.Position.Y] = GridObjectType.SnakeHead;
 
         updateDirectionSignal.Dispatch(snake.GetID());
 

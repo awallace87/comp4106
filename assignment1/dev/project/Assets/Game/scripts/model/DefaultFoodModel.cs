@@ -9,7 +9,6 @@ public class DefaultFoodModel : IFoodModel {
     public DefaultFoodModel(IGridManager manager)
     {
         this.id = manager.GetNextGridObjectID();
-        manager.AddGridObject(this);
     }
 
     public GridPosition Position
@@ -25,7 +24,6 @@ public class DefaultFoodModel : IFoodModel {
     {
         return id;
     }
-
 
     public GridObjectType GetGridObjectType() { return GridObjectType.Food; }
 }

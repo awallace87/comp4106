@@ -10,7 +10,6 @@ public class DefaultSnakeModel : ISnakeModel{
 	public DefaultSnakeModel(IGridManager manager)
 	{
         this.id = manager.GetNextGridObjectID();
-        manager.AddGridObject(this);
         direction = GridDirection.Invalid;
 	}
 
@@ -45,7 +44,4 @@ public class DefaultSnakeModel : ISnakeModel{
 	}
 
 	#endregion
-
-
-
 }

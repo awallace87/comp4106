@@ -15,21 +15,27 @@ public class FoodMediator : Mediator, IGridObjectMediator {
     public IGridManager gridManager { get; set; }
 
     private Signal<GridPosition> modelMovedSignal;
+    private Signal modelRemovedSignal;
 
     public override void OnRegister()
     {
         view.Initialize();
+        
         modelMovedSignal = new Signal<GridPosition>();
         modelMovedSignal.AddListener(onModelMoved);
 
-        viewManager.AddMediatorMoveSignal(modelMovedSignal, view.ModelID);
+        modelRemovedSignal = new Signal();
+        modelRemovedSignal.AddListener(onModelRemoved);
 
-        onModelMoved(gridManager.GetObjectByID(view.ModelID).Position);
+        viewManager.AddMediator(this, view.ModelID);
+
+        onModelMoved(gridManager.GetGridObject(view.ModelID).Position);
     }
 
     public override void OnRemove()
     {
-        viewManager.RemoveMediatorMoveSignal(view.ModelID);
+        Debug.Log("FoodMediator::OnRemove()");
+        viewManager.RemoveMediator(view.ModelID);
     }
 
     private void onModelMoved(GridPosition position)
@@ -37,8 +43,20 @@ public class FoodMediator : Mediator, IGridObjectMediator {
         view.ModelMovedSignal.Dispatch(position);
     }
 
+    private void onModelRemoved()
+    {
+        Debug.Log("FoodMediator::onModelRemoved()");
+        view.ModelRemovedSignal.Dispatch();
+    }
+
+
     public Signal<GridPosition> ModelMovedSignal
     {
         get { return modelMovedSignal; }
+    }
+
+    public Signal ModelRemovedSignal
+    {
+        get { return modelRemovedSignal; }
     }
 }

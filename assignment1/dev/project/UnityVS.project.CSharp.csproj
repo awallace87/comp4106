@@ -7,8 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{76619906-8354-7292-B899-6DA50ADAC95C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>UnityVS.project.CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <NoConfig>true</NoConfig>
@@ -60,10 +59,12 @@
     <Compile Include="Assets\Game\scripts\command\AddFoodCommand.cs" />
     <Compile Include="Assets\Game\scripts\command\CheckCollisionCommand.cs" />
     <Compile Include="Assets\Game\scripts\command\CreateSnakeCommand.cs" />
+    <Compile Include="Assets\Game\scripts\command\EatFoodCommand.cs" />
     <Compile Include="Assets\Game\scripts\command\GameEndCommand.cs" />
     <Compile Include="Assets\Game\scripts\command\GameStartCommand.cs" />
     <Compile Include="Assets\Game\scripts\command\MoveAllSnakesCommand.cs" />
     <Compile Include="Assets\Game\scripts\command\MoveSnakeCommand.cs" />
+    <Compile Include="Assets\Game\scripts\command\RemoveGridObjectCommand.cs" />
     <Compile Include="Assets\Game\scripts\command\UpdateAllSnakesCommand.cs" />
     <Compile Include="Assets\Game\scripts\command\UpdateSnakeDirectionCommand.cs" />
     <Compile Include="Assets\Game\scripts\MainContext.cs" />
@@ -87,8 +88,8 @@
     <Compile Include="Assets\Game\scripts\view\DefaultViewManager.cs" />
     <Compile Include="Assets\Game\scripts\view\FoodMediator.cs" />
     <Compile Include="Assets\Game\scripts\view\FoodView.cs" />
-    <Compile Include="Assets\Game\scripts\view\IGridObjectMediator.cs" />
     <Compile Include="Assets\Game\scripts\view\GridObjectView.cs" />
+    <Compile Include="Assets\Game\scripts\view\IGridObjectMediator.cs" />
     <Compile Include="Assets\Game\scripts\view\IViewManager.cs" />
     <Compile Include="Assets\Game\scripts\view\SnakeMediator.cs" />
     <Compile Include="Assets\Game\scripts\view\SnakeView.cs" />

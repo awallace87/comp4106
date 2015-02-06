@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using strange.extensions.command.impl;
+using System;
 
 public class AddFoodCommand : Command
 {
@@ -13,27 +14,34 @@ public class AddFoodCommand : Command
 
         IFoodModel food = injectionBinder.GetInstance<IFoodModel>();
         food.Position = GetFoodStartingPosition();
+        gridManager.AddGridObject(food);
+        //gridManager.Grid.Map[food.Position.X, food.Position.Y] = GridObjectType.Food;
 
-        GameObject foodObject = new GameObject("food");
-        FoodView foodView = foodObject.AddComponent<FoodView>();
+        Action createFoodAction = () =>
+        {
+            GameObject foodObject = new GameObject("food");
+            FoodView foodView = foodObject.AddComponent<FoodView>();
+            foodView.ModelID = food.GetID();
 
-        //Wire Both
-        foodView.ModelID = food.GetID();        
+        };
+
+        Root.RootMainThreadActions.Enqueue(createFoodAction);
     }
 
     GridPosition GetFoodStartingPosition()
     {
         bool foundUnoccupiedPosition = false;
+        System.Random random = new System.Random();
         GridPosition startPosition = new GridPosition(gridManager.Grid.Width / 2, gridManager.Grid.Height / 2);
         while (!foundUnoccupiedPosition)
         {
-            uint minX, maxX, minY, maxY;
+            int minX, maxX, minY, maxY;
             minX = 0;
-            maxX = gridManager.Grid.Width;
+            maxX = (int)gridManager.Grid.Width;
             minY = 0;
-            maxY = gridManager.Grid.Height;
-            uint xPosition = (uint)Random.Range(minX, maxX);
-            uint yPosition = (uint)Random.Range(minY, maxY);
+            maxY = (int)gridManager.Grid.Height;
+            uint xPosition = (uint)random.Next(minX, minY);
+            uint yPosition = (uint)random.Next(minY, maxY);
 
             startPosition = new GridPosition(xPosition, yPosition);
 

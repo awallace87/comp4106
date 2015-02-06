@@ -13,7 +13,7 @@ public class UpdateAllSnakesCommand : Command
 
     public override void Execute()
     {
-        Debug.Log("UpdateAllSnakesCommand::Execute");
+        //Debug.Log("UpdateAllSnakesCommand::Execute");
 
         //Find and Move Snakes
         List<uint> snakeIds = gridManager.GetIDsOfType(GridObjectType.SnakeHead);

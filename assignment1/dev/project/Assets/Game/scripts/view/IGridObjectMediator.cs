@@ -6,4 +6,5 @@ using strange.extensions.signal.impl;
 public interface IGridObjectMediator
 {
     Signal<GridPosition> ModelMovedSignal { get; }
+    Signal ModelRemovedSignal { get; }
 }

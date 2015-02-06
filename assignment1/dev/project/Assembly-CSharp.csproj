@@ -52,10 +52,12 @@
      <Compile Include="Assets\Game\scripts\command\AddFoodCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\CheckCollisionCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\CreateSnakeCommand.cs" />
+     <Compile Include="Assets\Game\scripts\command\EatFoodCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\GameEndCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\GameStartCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\MoveAllSnakesCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\MoveSnakeCommand.cs" />
+     <Compile Include="Assets\Game\scripts\command\RemoveGridObjectCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\UpdateAllSnakesCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\UpdateSnakeDirectionCommand.cs" />
      <Compile Include="Assets\Game\scripts\model\DefaultFoodModel.cs" />

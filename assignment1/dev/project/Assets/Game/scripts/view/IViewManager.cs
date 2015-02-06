@@ -3,7 +3,7 @@ using System.Collections;
 using strange.extensions.signal.impl;
 
 public interface IViewManager {
-    Signal<GridPosition> GetMediatorMoveSignal(uint id);
-    void AddMediatorMoveSignal(Signal<GridPosition> mediatorSignal, uint id);
-    void RemoveMediatorMoveSignal(uint id);
+    IGridObjectMediator GetMediator(uint id);
+    void AddMediator(IGridObjectMediator mediator, uint id);
+    void RemoveMediator(uint id);
 }

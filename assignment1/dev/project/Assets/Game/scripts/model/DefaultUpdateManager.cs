@@ -10,7 +10,7 @@ public class DefaultUpdateManager : IUpdateManager
     [Inject]
     public UpdateAllSnakesSignal updateSnakesSignal { get; set; }
 
-    private const uint MILLISECONDS_BETWEEN_MOVE = 1000;
+    private const uint MILLISECONDS_BETWEEN_MOVE = 500;
     private Timer moveTimer;
 
     public void Initialize()
@@ -45,11 +45,9 @@ public class DefaultUpdateManager : IUpdateManager
 
     void moveTimerElapsed(object sender, ElapsedEventArgs args)
     {
-        Debug.Log("Move Timer Elapsed");
+        //Debug.Log("Move Timer Elapsed");
         moveSnakeSignal.Dispatch();
         updateSnakesSignal.Dispatch();
         StartCycle();
     }
-
-
 }

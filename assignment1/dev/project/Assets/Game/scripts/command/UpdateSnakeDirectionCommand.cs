@@ -16,21 +16,22 @@ public class UpdateSnakeDirectionCommand : Command
 
     public override void Execute()
     {
-        ISnakeModel snakeModel = gridManager.GetObjectByID(snakeModelID) as ISnakeModel;
+        ISnakeModel snakeModel = gridManager.GetGridObject(snakeModelID) as ISnakeModel;
         GridPosition foodPosition;
 
         List<uint> foodIDs = gridManager.GetIDsOfType(GridObjectType.Food);
         if (foodIDs.Count < 1)
         {
+            Debug.Log("No Food");
             return;
         }
 
-        foodPosition = gridManager.GetObjectByID(foodIDs[0]).Position;
-
+        foodPosition = gridManager.GetGridObject(foodIDs[0]).Position;
+        //Debug.Log("Food Position " + foodPosition.X + "," + foodPosition.Y);
         InitializeVisited();
         InitializeDistance();
         int StartTime = System.DateTime.UtcNow.Millisecond;
-        Debug.Log("Search Started");
+        //Debug.Log("Search Started");
 
         Stack dfsStack = new Stack();
         isVisited[foodPosition.X, foodPosition.Y] = true;
@@ -43,7 +44,7 @@ public class UpdateSnakeDirectionCommand : Command
             //Debug.Log("Checking Position - " + positionPushed.X.ToString() + "," + positionPushed.Y.ToString());
             if (positionPushed.Equals(snakeModel.Position))
             {
-                Debug.Log("Snake Found");
+                //Debug.Log("Snake Found");
                 break;
             }
             List<GridPosition> adjacentPositions = getAdjacentPositions(positionPushed);

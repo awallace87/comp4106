@@ -5,29 +5,29 @@ using strange.extensions.signal.impl;
 
 public class DefaultViewManager : IViewManager {
 
-    private Dictionary<uint, Signal<GridPosition>> gridMediators;
+    private Dictionary<uint, IGridObjectMediator> gridMediators;
 
     public DefaultViewManager()
     {
         //Debug.Log("DefaultViewManager()");
-        this.gridMediators = new Dictionary<uint, Signal<GridPosition>>();
+        this.gridMediators = new Dictionary<uint, IGridObjectMediator>();
     }
 
-    public Signal<GridPosition> GetMediatorMoveSignal(uint id)
+    public IGridObjectMediator GetMediator(uint id)
     {
         //Debug.Log("GetMediatorByID()");
 
         return gridMediators[id];
     }
 
-    public void AddMediatorMoveSignal(Signal<GridPosition> mediatorSignal, uint id)
+    public void AddMediator(IGridObjectMediator mediator, uint id)
     {
         //Debug.Log("AddMediatorByID()");
 
-        gridMediators.Add(id, mediatorSignal);
+        gridMediators.Add(id, mediator);
     }
 
-    public void RemoveMediatorMoveSignal(uint id)
+    public void RemoveMediator(uint id)
     {
         //Debug.Log("RemoveMediatorByID()");
 
