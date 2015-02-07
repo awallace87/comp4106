@@ -30,6 +30,7 @@ public class MainContext : SignalContext
     {
         mediationBinder.Bind<SnakeView>().To<SnakeMediator>();
         mediationBinder.Bind<FoodView>().To<FoodMediator>();
+        mediationBinder.Bind<WallView>().To<WallMediator>();
     }
 
     void mapInjectionBindings()
@@ -40,8 +41,10 @@ public class MainContext : SignalContext
         
         injectionBinder.Bind<IGrid>().To<DefaultGrid>();
 
-        injectionBinder.Bind<ISnakeModel>().To<DefaultSnakeModel>();
+        injectionBinder.Bind<ISnakeModel>().To<DefaultSnakeModel>().ToName(SnakeBindings.Head);
+        injectionBinder.Bind<ISnakeModel>().To<SnakeTailModel>().ToName(SnakeBindings.Tail);
         injectionBinder.Bind<IFoodModel>().To<DefaultFoodModel>();
+        injectionBinder.Bind<IWallModel>().To<DefaultWallModel>();
     }
 
     void mapCommandBindings()
@@ -49,6 +52,7 @@ public class MainContext : SignalContext
         commandBinder.Bind<GameStartSignal>()
             .InSequence()
             .To<GameStartCommand>()
+            .To<AddInitialWallsCommand>()
             .To<AddFoodCommand>()
             .To<CreateSnakeCommand>()
             .Once();
@@ -60,11 +64,17 @@ public class MainContext : SignalContext
         commandBinder.Bind<UpdateSnakeDirectionSignal>().To<UpdateSnakeDirectionCommand>();
         commandBinder.Bind<UpdateAllSnakesSignal>().To<UpdateAllSnakesCommand>();
 
-        commandBinder.Bind<EatFoodSignal>().To<EatFoodCommand>().To<AddFoodCommand>();
+        commandBinder.Bind<IncrementSnakeTailSignal>().To<IncrementSnakeTailCommand>();
+
+        commandBinder.Bind<EatFoodSignal>()
+            .InSequence()
+            .To<EatFoodCommand>()
+            .To<AddFoodCommand>();
+
+        commandBinder.Bind<AddWallSignal>().To<AddWallCommand>();
 
         commandBinder.Bind<RemoveGridObjectSignal>().To<RemoveGridObjectCommand>();
         //commandBinder.Bind<GridObjectMovedSignal>().To<CheckCollisionCommand>();
-
     }
 
 	public override IContext Start ()

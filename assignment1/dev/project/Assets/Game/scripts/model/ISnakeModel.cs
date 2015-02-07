@@ -3,5 +3,12 @@ using System.Collections;
 
 public interface ISnakeModel : IGridObject{
     GridDirection Direction { get; set; }
-	void Move();
+    GridPosition NextPosition { get; set; }
+    ISnakeModel Next { get; set; }
+}
+
+public enum SnakeBindings
+{
+    Head
+    ,Tail
 }

@@ -8,6 +8,10 @@ public class MoveSnakeSignal : Signal<uint> { }
 
 public class UpdateSnakeDirectionSignal : Signal<uint> { }
 
+public class IncrementSnakeTailSignal : Signal<uint> { }
+
 public class EatFoodSignal : Signal<GridPosition, uint> { }
 
 public class RemoveGridObjectSignal : Signal<IGridObject> { }
+
+public class AddWallSignal : Signal<GridPosition> { }

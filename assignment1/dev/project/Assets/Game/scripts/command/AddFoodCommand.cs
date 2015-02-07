@@ -40,7 +40,7 @@ public class AddFoodCommand : Command
             maxX = (int)gridManager.Grid.Width;
             minY = 0;
             maxY = (int)gridManager.Grid.Height;
-            uint xPosition = (uint)random.Next(minX, minY);
+            uint xPosition = (uint)random.Next(minX, maxX);
             uint yPosition = (uint)random.Next(minY, maxY);
 
             startPosition = new GridPosition(xPosition, yPosition);

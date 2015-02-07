@@ -4,8 +4,11 @@ using System.Collections;
 public class DefaultSnakeModel : ISnakeModel{
 
     private GridDirection direction;
+    private GridPosition nextPosition;
 	private GridPosition position;
 	private uint id;
+
+    private ISnakeModel next = null;
 	
 	public DefaultSnakeModel(IGridManager manager)
 	{
@@ -39,9 +42,20 @@ public class DefaultSnakeModel : ISnakeModel{
 
 	#region ISnakeModel implementation
 
-	public void Move ()
+	public ISnakeModel Next
 	{
+        get { return next; }
+        set { next = value; }
 	}
 
-	#endregion
+
+
+    public GridPosition NextPosition
+    {
+        get { return nextPosition;  }
+        set { nextPosition = value; }
+    }
+
+
+    #endregion
 }

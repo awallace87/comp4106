@@ -50,11 +50,14 @@
      <Compile Include="Assets\Game\scripts\Root.cs" />
      <Compile Include="Assets\Game\scripts\SignalContext.cs" />
      <Compile Include="Assets\Game\scripts\command\AddFoodCommand.cs" />
+     <Compile Include="Assets\Game\scripts\command\AddInitialWallsCommand.cs" />
+     <Compile Include="Assets\Game\scripts\command\AddWallCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\CheckCollisionCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\CreateSnakeCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\EatFoodCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\GameEndCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\GameStartCommand.cs" />
+     <Compile Include="Assets\Game\scripts\command\IncrementSnakeTailCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\MoveAllSnakesCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\MoveSnakeCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\RemoveGridObjectCommand.cs" />
@@ -65,6 +68,7 @@
      <Compile Include="Assets\Game\scripts\model\DefaultGridManager.cs" />
      <Compile Include="Assets\Game\scripts\model\DefaultSnakeModel.cs" />
      <Compile Include="Assets\Game\scripts\model\DefaultUpdateManager.cs" />
+     <Compile Include="Assets\Game\scripts\model\DefaultWallModel.cs" />
      <Compile Include="Assets\Game\scripts\model\GridPosition.cs" />
      <Compile Include="Assets\Game\scripts\model\IFoodModel.cs" />
      <Compile Include="Assets\Game\scripts\model\IGrid.cs" />
@@ -72,6 +76,8 @@
      <Compile Include="Assets\Game\scripts\model\IGridObject.cs" />
      <Compile Include="Assets\Game\scripts\model\ISnakeModel.cs" />
      <Compile Include="Assets\Game\scripts\model\IUpdateManager.cs" />
+     <Compile Include="Assets\Game\scripts\model\IWallModel.cs" />
+     <Compile Include="Assets\Game\scripts\model\SnakeTailModel.cs" />
      <Compile Include="Assets\Game\scripts\signal\GridObjectSignals.cs" />
      <Compile Include="Assets\Game\scripts\signal\LifecycleSignals.cs" />
      <Compile Include="Assets\Game\scripts\signal\UpdateSignals.cs" />
@@ -83,6 +89,8 @@
      <Compile Include="Assets\Game\scripts\view\IViewManager.cs" />
      <Compile Include="Assets\Game\scripts\view\SnakeMediator.cs" />
      <Compile Include="Assets\Game\scripts\view\SnakeView.cs" />
+     <Compile Include="Assets\Game\scripts\view\WallMediator.cs" />
+     <Compile Include="Assets\Game\scripts\view\WallView.cs" />
      <Compile Include="Assets\StrangeIoC\examples\Assets\scripts\multiplecontexts\game\GameContext.cs" />
      <Compile Include="Assets\StrangeIoC\examples\Assets\scripts\multiplecontexts\game\GameRoot.cs" />
      <Compile Include="Assets\StrangeIoC\examples\Assets\scripts\multiplecontexts\game\controller\GameEvent.cs" />

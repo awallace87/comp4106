@@ -20,30 +20,29 @@ public class MoveSnakeCommand : Command
         //Get Updated Position
         //Debug.Log("MoveSnakeCommand::Execute");
         snakeModel = gridManager.GetGridObject(modelID) as ISnakeModel;
-        GridPosition nextPosition = snakeModel.Position.GetPositionInDirection(snakeModel.Direction);
 
-        if (!gridManager.IsValidPosition(nextPosition))
+        if (!gridManager.IsValidPosition(snakeModel.NextPosition))
         {
             //Out of Bounds
             //TODO - Handle
             return;
         }
         //Check if a collision will occur
-        GridObjectType destinationType = gridManager.Grid.Map[nextPosition.X, nextPosition.Y];
+        GridObjectType destinationType = gridManager.Grid.Map[snakeModel.NextPosition.X, snakeModel.NextPosition.Y];
 
         switch (destinationType)
         {
             case GridObjectType.Food:
                 {
                     //Eat Food
-                    EatFood(nextPosition);
-                    MoveSnake(nextPosition);
+                    EatFood(snakeModel.NextPosition);
+                    MoveSnake(snakeModel.NextPosition);
                 }
                 break;
             case GridObjectType.Empty:
                 {
                     //Move
-                    MoveSnake(nextPosition);
+                    MoveSnake(snakeModel.NextPosition);
                 }
                 break;
             default:
@@ -57,13 +56,32 @@ public class MoveSnakeCommand : Command
 
     void MoveSnake(GridPosition position)
     {
+        GridPosition snakePriorPosition = snakeModel.Position;
         //Debug.Log("Move Snake Position");
         gridManager.Grid.Map[snakeModel.Position.X, snakeModel.Position.Y] = GridObjectType.Empty;
         snakeModel.Position = position;
 
         gridManager.Grid.Map[snakeModel.Position.X, snakeModel.Position.Y] = snakeModel.GetGridObjectType();
         //TODO Check non-existent mediator
-        viewManager.GetMediator(modelID).ModelMovedSignal.Dispatch(position);
+        viewManager.GetMediator(modelID).ModelMovedSignal.Dispatch(snakeModel.Position);
+
+        while (snakeModel.Next != null)
+        {
+            snakeModel = snakeModel.Next;
+            if (!snakeModel.Position.Equals(snakePriorPosition))
+            {
+                GridPosition oldPosition = snakeModel.Position;
+                gridManager.Grid.Map[snakeModel.Position.X, snakeModel.Position.Y] = GridObjectType.Empty;
+                snakeModel.Position = snakePriorPosition;
+                gridManager.Grid.Map[snakeModel.Position.X, snakeModel.Position.Y] = snakeModel.GetGridObjectType();
+                viewManager.GetMediator(snakeModel.GetID()).ModelMovedSignal.Dispatch(snakeModel.Position);
+                snakePriorPosition = oldPosition;
+            }
+            else
+            {
+                break;
+            }
+        }
     }
 
     void EatFood(GridPosition foodPosition)

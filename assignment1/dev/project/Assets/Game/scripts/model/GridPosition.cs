@@ -25,6 +25,11 @@ public class GridPosition {
         }
     }
 
+    public override string ToString()
+    {
+        return string.Format("({0},{1})",this.X, this.Y);
+    }
+
     public GridPosition GetPositionInDirection(GridDirection direction)
     {
         GridPosition directionPosition = new GridPosition(this.X, this.Y);
@@ -38,6 +43,35 @@ public class GridPosition {
 
         return directionPosition;
     }
+
+    public GridDirection GetDirectionOfPosition(GridPosition position)
+    {
+        GridDirection directionOfPosition = GridDirection.Invalid;
+        if (this.X == position.X)
+        {
+            Debug.Log("Position in X");
+            if (this.Y + 1 == position.Y)
+            {
+                directionOfPosition = GridDirection.Up;
+            }
+            else if (this.Y - 1 == position.Y)
+            {
+                directionOfPosition = GridDirection.Down;
+            }
+        }
+        else if (this.Y == position.Y)
+        {
+            if (this.X + 1 == position.X)
+            {
+                directionOfPosition = GridDirection.Right;
+            }
+            else if (this.X - 1 == position.X)
+            {
+                directionOfPosition = GridDirection.Left;
+            }
+        }
+        return directionOfPosition;
+    }
 }
 
 public enum GridDirection 
@@ -45,8 +79,8 @@ public enum GridDirection
 	Invalid = -1,
     ValidDirectionStart,
 	Up = ValidDirectionStart,
-	Down,
 	Left,
+    Down,
 	Right,
     ValidDirectionEnd = Right
 }

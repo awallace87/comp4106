@@ -10,11 +10,14 @@ public class CreateSnakeCommand : Command {
     [Inject]
     public UpdateSnakeDirectionSignal updateDirectionSignal { get; set; }
 
+    [Inject]
+    public IncrementSnakeTailSignal incrementSnakeSignal { get; set; }
+
 	public override void Execute ()
 	{
 		Debug.Log ("CreateSnakeCommand::Execute");
 
-		ISnakeModel snake = injectionBinder.GetInstance<ISnakeModel> ();
+		ISnakeModel snake = injectionBinder.GetInstance<ISnakeModel> (SnakeBindings.Head);
         snake.Position = GetSnakeStartingPosition();
         gridManager.AddGridObject(snake);
         //gridManager.Grid.Map[snake.Position.X, snake.Position.Y] = GridObjectType.SnakeHead;
@@ -27,6 +30,11 @@ public class CreateSnakeCommand : Command {
 
 		//Wire Both Together
 		snakeView.ModelID = snake.GetID ();
+
+        for (int i = 0; i < 7; i++)
+        {
+            incrementSnakeSignal.Dispatch(snake.GetID());
+        }
 	}
 
     GridPosition GetSnakeStartingPosition() 

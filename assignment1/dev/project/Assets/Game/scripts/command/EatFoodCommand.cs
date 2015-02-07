@@ -20,7 +20,10 @@ public class EatFoodCommand : Command
             RemoveGridObjectSignal removeSignal = injectionBinder.GetInstance<RemoveGridObjectSignal>();
             removeSignal.Dispatch(gridManager.GetGridObject(foodPosition));
             Debug.Log("Eat Food Command");
+
             //Update Score/Snake Length
+            IncrementSnakeTailSignal addTailSignal = injectionBinder.GetInstance<IncrementSnakeTailSignal>();
+            addTailSignal.Dispatch(snakeModelID);
         }
         catch (GridObjectNotFoundException gridException)
         {
