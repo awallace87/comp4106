@@ -59,6 +59,7 @@ public class MainContext : SignalContext
 
         commandBinder.Bind<GameEndSignal>().To<GameEndCommand>().Once();
 
+        commandBinder.Bind<CreateSnakeSignal>().To<CreateSnakeCommand>();
         commandBinder.Bind<MoveAllSnakesSignal>().To<MoveAllSnakesCommand>();
         commandBinder.Bind<MoveSnakeSignal>().To<MoveSnakeCommand>();
         commandBinder.Bind<UpdateSnakeDirectionSignal>().To<UpdateSnakeDirectionCommand>();
@@ -101,5 +102,12 @@ public class MainContext : SignalContext
         Debug.Log("OnRemove");
         GameEndSignal endSignal = (GameEndSignal)injectionBinder.GetInstance<GameEndSignal>();
         endSignal.Dispatch();
+    }
+
+    public void AddSnake()
+    {
+        Debug.Log("AddSnake");
+        CreateSnakeSignal createSnakeSignal = injectionBinder.GetInstance<CreateSnakeSignal>();
+        createSnakeSignal.Dispatch();
     }
 }

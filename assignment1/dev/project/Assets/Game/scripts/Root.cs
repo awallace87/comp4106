@@ -26,7 +26,14 @@ public class Root : ContextView
         {
             RootMainThreadActions.Dequeue().Invoke();
         }
-    }
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            //Add Snake
+            MainContext mainContext = context as MainContext;
+            mainContext.AddSnake();
+        }
+    }
     
+
 }

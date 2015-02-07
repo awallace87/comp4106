@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using strange.extensions.command.impl;
+using System;
 
 public class CreateSnakeCommand : Command {
 
@@ -24,12 +25,18 @@ public class CreateSnakeCommand : Command {
 
         updateDirectionSignal.Dispatch(snake.GetID());
 
-		//Create Snake View
-		GameObject snakeObject = new GameObject("snake");
-		SnakeView snakeView = snakeObject.AddComponent<SnakeView>();
+        Action createSnakeAction = () =>
+        {
 
-		//Wire Both Together
-		snakeView.ModelID = snake.GetID ();
+            //Create Snake View
+            GameObject snakeObject = new GameObject("snake");
+            SnakeView snakeView = snakeObject.AddComponent<SnakeView>();
+
+            //Wire Both Together
+            snakeView.ModelID = snake.GetID();
+        };
+
+        Root.RootMainThreadActions.Enqueue(createSnakeAction);
 
         for (int i = 0; i < 7; i++)
         {
@@ -40,16 +47,17 @@ public class CreateSnakeCommand : Command {
     GridPosition GetSnakeStartingPosition() 
     {
         bool foundUnoccupiedPosition = false;
+        System.Random random = new System.Random();
         GridPosition startPosition = new GridPosition(gridManager.Grid.Width / 2, gridManager.Grid.Height / 2);
         while (!foundUnoccupiedPosition)
         {
-            uint minX, maxX, minY, maxY;
-            minX = (uint)(gridManager.Grid.Width * 0.25);
-            maxX = (uint)(gridManager.Grid.Width * 0.75);
-            minY = (uint)(gridManager.Grid.Height * 0.25);
-            maxY = (uint)(gridManager.Grid.Height * 0.75);
-            uint xPosition = (uint)Random.Range(minX, maxX);
-            uint yPosition = (uint)Random.Range(minY, maxY);
+            int minX, maxX, minY, maxY;
+            minX = (int)(gridManager.Grid.Width * 0.25);
+            maxX = (int)(gridManager.Grid.Width * 0.75);
+            minY = (int)(gridManager.Grid.Height * 0.25);
+            maxY = (int)(gridManager.Grid.Height * 0.75);
+            uint xPosition = (uint)random.Next(minX, maxX);
+            uint yPosition = (uint)random.Next(minY, maxY);
 
             startPosition = new GridPosition(xPosition, yPosition);
 
