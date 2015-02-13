@@ -2,6 +2,7 @@
 using System.Collections;
 using strange.extensions.command.impl;
 using System.Collections.Generic;
+using System;
 
 public class UpdateSnakeDirectionCommand : Command
 {
@@ -13,6 +14,10 @@ public class UpdateSnakeDirectionCommand : Command
 
     bool[,] isVisited;
     uint[,] distance;
+
+	delegate uint distanceHeuristic(GridPosition a, GridPosition b);
+	delegate uint differenceHeuristic(GridPosition a, GridPosition b);
+	delegate uint averageHeuristic(GridPosition a, GridPosition b);
 
     public override void Execute()
     {
@@ -26,16 +31,26 @@ public class UpdateSnakeDirectionCommand : Command
         ISnakeModel snakeModel = gridManager.GetGridObject(snakeModelID) as ISnakeModel;
         IGridObject foodModel = gridManager.GetGridObject(foodIDs[0]);
 
+
+
         InitializeVisited();
         int StartTime = System.DateTime.UtcNow.Millisecond;
         Debug.Log("Search Started");
+		//TODO: Store Navigation Method in Snake
         //snakeModel.NextPosition = BreadthFirstSearch(snakeModel.Position);
         //snakeModel.NextPosition = DepthFirstSearch(foodModel.Position, snakeModel.Position);
-        snakeModel.NextPosition = AStarSearch(snakeModel.Position, foodModel.Position);
+        snakeModel.NextPosition = AStarSearch(snakeModel.Position, foodModel.Position, DifferenceHeuristic);
+
         int totalTime = System.DateTime.UtcNow.Millisecond - StartTime;
         Debug.Log("Time Completed in - " + totalTime.ToString());
 
     }
+
+	void initializeDelegates() {
+		//distanceHeuristic = new distanceHeuristic (DistanceHeuristic);
+		//differenceHeuristic = new differenceHeuristic (DifferenceHeuristic);
+		//averageHeuristic = new averageHeuristic (AverageHeuristic);
+	}
 
     GridPosition BreadthFirstSearch(GridPosition snakePosition)
     {
@@ -122,7 +137,7 @@ public class UpdateSnakeDirectionCommand : Command
         return nextPosition;
     }
 
-    GridPosition AStarSearch(GridPosition snakePosition, GridPosition foodPosition)
+	GridPosition AStarSearch(GridPosition snakePosition, GridPosition foodPosition, Func<GridPosition,GridPosition,uint> heuristic)
     {
         GridPosition nextPosition = snakePosition;
 
@@ -135,7 +150,7 @@ public class UpdateSnakeDirectionCommand : Command
         
         openSet.Add(snakePosition);
         gScore[snakePosition] = 0;
-        fScore[snakePosition] = gScore[snakePosition] + HeuristicCostEstimate(snakePosition, foodPosition);
+        fScore[snakePosition] = gScore[snakePosition] + heuristic(snakePosition, foodPosition);
         GridPosition current = snakePosition ;
         while(openSet.Count > 0)
         {
@@ -165,7 +180,7 @@ public class UpdateSnakeDirectionCommand : Command
                     {
                         predecessor[adjacent] = current;
                         gScore[adjacent] = tempGScore;
-                        fScore[adjacent] = gScore[adjacent] + HeuristicCostEstimate(adjacent, foodPosition);
+                        fScore[adjacent] = gScore[adjacent] + heuristic(adjacent, foodPosition);
                         if (!openSet.Contains(adjacent))
                         {
                             openSet.Add(adjacent);
@@ -183,11 +198,20 @@ public class UpdateSnakeDirectionCommand : Command
         return nextPosition;
     }
 
-    uint HeuristicCostEstimate(GridPosition a, GridPosition b)
+    public uint DistanceHeuristic(GridPosition a, GridPosition b)
     {
         return (uint)Mathf.Sqrt(Mathf.Pow((a.X - b.X), 2) + Mathf.Pow((a.Y - b.Y), 2));
     }
 
+	public uint DifferenceHeuristic(GridPosition a, GridPosition b)
+	{
+		return (uint)Mathf.Abs (((int)a.X - (int)b.X) + ((int)a.Y - (int)b.Y));
+	}
+
+	public uint AverageHeuristic(GridPosition a, GridPosition b)
+	{
+		return (DistanceHeuristic (a, b) + DifferenceHeuristic (a, b) / 2);
+	}
 
 
     List<GridPosition> getAdjacentPositions(GridPosition position)
