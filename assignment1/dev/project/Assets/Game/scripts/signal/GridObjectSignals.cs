@@ -14,6 +14,8 @@ public class EatFoodSignal : Signal<GridPosition, uint> { }
 
 public class RemoveGridObjectSignal : Signal<IGridObject> { }
 
+public class AddRandomObstacleSignal : Signal { }
+
 public class AddWallSignal : Signal<GridPosition> { }
 
-public class CreateSnakeSignal : Signal { }
+public class CreateSnakeSignal : Signal<NavigationMethod> { }

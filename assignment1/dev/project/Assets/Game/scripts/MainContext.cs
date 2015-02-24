@@ -36,6 +36,7 @@ public class MainContext : SignalContext
     void mapInjectionBindings()
     {
         injectionBinder.Bind<IGridManager>().To<DefaultGridManager>().ToSingleton();
+		injectionBinder.Bind<INavigationManager> ().To<DefaultNavigationManager> ().ToSingleton ();
         injectionBinder.Bind<IViewManager>().To<DefaultViewManager>().ToSingleton();
         injectionBinder.Bind<IUpdateManager>().To<DefaultUpdateManager>().ToSingleton();
         
@@ -54,7 +55,6 @@ public class MainContext : SignalContext
             .To<GameStartCommand>()
             .To<AddInitialWallsCommand>()
             .To<AddFoodCommand>()
-            .To<CreateSnakeCommand>()
             .Once();
 
         commandBinder.Bind<GameEndSignal>().To<GameEndCommand>().Once();
@@ -72,6 +72,7 @@ public class MainContext : SignalContext
             .To<EatFoodCommand>()
             .To<AddFoodCommand>();
 
+		commandBinder.Bind<AddRandomObstacleSignal> ().To<AddRandomObstacleCommand> ();
         commandBinder.Bind<AddWallSignal>().To<AddWallCommand>();
 
         commandBinder.Bind<RemoveGridObjectSignal>().To<RemoveGridObjectCommand>();
@@ -104,10 +105,17 @@ public class MainContext : SignalContext
         endSignal.Dispatch();
     }
 
-    public void AddSnake()
+    public void AddSnake(NavigationMethod method)
     {
         Debug.Log("AddSnake");
-        CreateSnakeSignal createSnakeSignal = injectionBinder.GetInstance<CreateSnakeSignal>();
-        createSnakeSignal.Dispatch();
+		CreateSnakeSignal createSnakeSignal = injectionBinder.GetInstance<CreateSnakeSignal>();
+		createSnakeSignal.Dispatch(method);
     }
+
+	public void AddObstacle()
+	{
+		Debug.Log ("Add Wall");
+		AddRandomObstacleSignal obstacleSignal = injectionBinder.GetInstance<AddRandomObstacleSignal> () as AddRandomObstacleSignal;
+		obstacleSignal.Dispatch ();
+	}
 }

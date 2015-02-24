@@ -12,6 +12,9 @@ public class UpdateSnakeDirectionCommand : Command
     [Inject]
     public IGridManager gridManager { get; set; }
 
+	[Inject]
+	public INavigationManager navManager { get; set; }
+
     bool[,] isVisited;
     uint[,] distance;
 
@@ -36,10 +39,46 @@ public class UpdateSnakeDirectionCommand : Command
         InitializeVisited();
         int StartTime = System.DateTime.UtcNow.Millisecond;
         Debug.Log("Search Started");
-		//TODO: Store Navigation Method in Snake
-        //snakeModel.NextPosition = BreadthFirstSearch(snakeModel.Position);
-        //snakeModel.NextPosition = DepthFirstSearch(foodModel.Position, snakeModel.Position);
-        snakeModel.NextPosition = AStarSearch(snakeModel.Position, foodModel.Position, DifferenceHeuristic);
+
+		NavigationMethod method = navManager.GetNavigationMethod (snakeModelID);
+
+		GridPosition nextPosition;
+
+		switch (method) 
+		{
+			case NavigationMethod.BreadthFirst:
+				{
+					nextPosition = BreadthFirstSearch (snakeModel.Position);
+				}
+				break;
+			case NavigationMethod.DepthFirst:
+				{
+					nextPosition = DepthFirstSearch (foodModel.Position, snakeModel.Position);
+				}
+				break;
+			case NavigationMethod.AStarEuclidean:
+				{
+					nextPosition = AStarSearch (snakeModel.Position, foodModel.Position, DistanceHeuristic);
+				}
+				break;
+			case NavigationMethod.AStarManhattan:
+				{
+					nextPosition = AStarSearch (snakeModel.Position, foodModel.Position, DifferenceHeuristic);
+				}
+				break;
+			case NavigationMethod.AStarAverage:
+				{
+					nextPosition = AStarSearch( snakeModel.Position, foodModel.Position, AverageHeuristic);
+				}
+				break;
+			default:
+				{
+					nextPosition = BreadthFirstSearch (snakeModel.Position);
+				}
+				break;
+		}
+
+		snakeModel.NextPosition = nextPosition;
 
         int totalTime = System.DateTime.UtcNow.Millisecond - StartTime;
         Debug.Log("Time Completed in - " + totalTime.ToString());
@@ -111,13 +150,13 @@ public class UpdateSnakeDirectionCommand : Command
             //Debug.Log("Checking Position - " + positionPushed.X.ToString() + "," + positionPushed.Y.ToString());
             if (currentNode.Position.Equals(snakePosition))
             {
-                Debug.Log("Snake Found at - " + currentNode.Position.X + "," + currentNode.Position.Y);
+                //Debug.Log("Snake Found at - " + currentNode.Position.X + "," + currentNode.Position.Y);
 
                 if (currentNode.Predecessor != null)
                 {
                     //Found Snake
-                    Debug.Log("Backtrack Success");
-                    Debug.Log("Next Position - " + currentNode.Predecessor.Position);
+                    //Debug.Log("Backtrack Success");
+                    //Debug.Log("Next Position - " + currentNode.Predecessor.Position);
                     nextPosition = currentNode.Predecessor.Position;
                 }
                 break;
@@ -144,6 +183,7 @@ public class UpdateSnakeDirectionCommand : Command
         List<GridPosition> closedSet = new List<GridPosition>();
         List<GridPosition> openSet = new List<GridPosition>();
 
+
         Dictionary<GridPosition, GridPosition> predecessor = new Dictionary<GridPosition,GridPosition>();
         Dictionary<GridPosition, uint> gScore = new Dictionary<GridPosition, uint>();
         Dictionary<GridPosition, uint> fScore = new Dictionary<GridPosition,uint>();
@@ -165,7 +205,7 @@ public class UpdateSnakeDirectionCommand : Command
 
             if (current.Equals(foodPosition))
             {
-                Debug.Log("Found Food");
+                //Debug.Log("Found Food");
                 break;
             }
 

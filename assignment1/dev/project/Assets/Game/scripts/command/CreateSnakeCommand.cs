@@ -8,11 +8,17 @@ public class CreateSnakeCommand : Command {
 	[Inject]
 	public IGridManager gridManager { get; set; }
 
+	[Inject]
+	public INavigationManager navigationManager { get; set; }
+
     [Inject]
     public UpdateSnakeDirectionSignal updateDirectionSignal { get; set; }
 
     [Inject]
     public IncrementSnakeTailSignal incrementSnakeSignal { get; set; }
+
+	[Inject]
+	public NavigationMethod navigationMethod { get; set; }
 
 	public override void Execute ()
 	{
@@ -21,13 +27,13 @@ public class CreateSnakeCommand : Command {
 		ISnakeModel snake = injectionBinder.GetInstance<ISnakeModel> (SnakeBindings.Head);
         snake.Position = GetSnakeStartingPosition();
         gridManager.AddGridObject(snake);
-        //gridManager.Grid.Map[snake.Position.X, snake.Position.Y] = GridObjectType.SnakeHead;
+
+		navigationManager.AddSnake (snake.GetID (), navigationMethod);
 
         updateDirectionSignal.Dispatch(snake.GetID());
 
         Action createSnakeAction = () =>
         {
-
             //Create Snake View
             GameObject snakeObject = new GameObject("snake");
             SnakeView snakeView = snakeObject.AddComponent<SnakeView>();

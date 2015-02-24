@@ -14,12 +14,26 @@ public class SnakeMediator : Mediator, IGridObjectMediator {
     [Inject]
     public IGridManager gridManager { get; set; }
 
+	[Inject]
+	public INavigationManager navigationManager { get; set; }
+
     private Signal<GridPosition> modelMovedSignal;
     private Signal modelRemovedSignal;
 
     public override void OnRegister ()
 	{
-		view.Initialize ();
+
+		NavigationMethod method;
+		try 
+		{
+			method = navigationManager.GetNavigationMethod (view.ModelID);
+		}
+		catch(GridObjectNotFoundException exception)
+		{
+			method = NavigationMethod.NavigationMethodEnd;
+		}
+
+		view.Initialize (method);
 
         modelMovedSignal = new Signal<GridPosition>();
         modelMovedSignal.AddListener(onModelMoved);

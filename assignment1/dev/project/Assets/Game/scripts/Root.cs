@@ -27,12 +27,48 @@ public class Root : ContextView
             RootMainThreadActions.Dequeue().Invoke();
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			//Add Snake
+			MainContext mainContext = context as MainContext;
+			mainContext.AddSnake(NavigationMethod.AStarAverage);
+		}
+
+        if (Input.GetKeyDown(KeyCode.D))
         {
             //Add Snake
             MainContext mainContext = context as MainContext;
-            mainContext.AddSnake();
+            mainContext.AddSnake(NavigationMethod.DepthFirst);
         }
+
+		if (Input.GetKeyDown(KeyCode.B))
+		{
+			//Add Snake
+			MainContext mainContext = context as MainContext;
+			mainContext.AddSnake(NavigationMethod.BreadthFirst);
+		}
+
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			//Add Snake
+			MainContext mainContext = context as MainContext;
+			mainContext.AddSnake(NavigationMethod.AStarEuclidean);
+		}
+
+		if (Input.GetKeyDown(KeyCode.M))
+		{
+			//Add Snake
+			MainContext mainContext = context as MainContext;
+			mainContext.AddSnake(NavigationMethod.AStarManhattan);
+		}
+
+		if (Input.GetKeyDown (KeyCode.W))
+		{
+			MainContext mainContext = context as MainContext;
+			mainContext.AddObstacle();
+		}
+
+
     }
     
 
