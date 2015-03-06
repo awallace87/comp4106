@@ -38,10 +38,10 @@ public class UpdateSnakeDirectionCommand : Command
 
         InitializeVisited();
         int StartTime = System.DateTime.UtcNow.Millisecond;
-        Debug.Log("Search Started");
+
 
 		NavigationMethod method = navManager.GetNavigationMethod (snakeModelID);
-
+		Debug.Log("Search Started - Method - " + method.ToString());
 		GridPosition nextPosition;
 
 		switch (method) 
@@ -81,7 +81,7 @@ public class UpdateSnakeDirectionCommand : Command
 		snakeModel.NextPosition = nextPosition;
 
         int totalTime = System.DateTime.UtcNow.Millisecond - StartTime;
-        Debug.Log("Time Completed in - " + totalTime.ToString());
+        Debug.Log("Time Completed in - " + totalTime.ToString() + " - Method: " + method.ToString());
 
     }
 

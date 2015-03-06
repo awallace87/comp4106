@@ -20,29 +20,20 @@ public class SnakeView : GridObjectView {
 	{
 		switch (method) {
 		case NavigationMethod.AStarEuclidean:
-				{
-						return Color.blue;
-				}
+				return Color.blue;
 				break;
 		case NavigationMethod.AStarManhattan:
-				{
-						return Color.cyan;
-				}
+				return Color.cyan;
 				break;
 		case NavigationMethod.BreadthFirst:
-				{
-						return Color.gray;
-				}
+				return Color.gray;
 				break;
 		case NavigationMethod.DepthFirst:
-				{
-						return Color.yellow;
-				}
+				return Color.yellow;
 				break;
 		case NavigationMethod.AStarAverage:
-				{
-						return Color.magenta;
-				}
+				return Color.magenta;
+ 				break;
 		}
 
 		return Color.green;

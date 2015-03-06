@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DefaultGrid : IGrid{
 	private const uint DEFAULT_HEIGHT = 30;
-	private const uint DEFAULT_WIDTH = 40;
+	private const uint DEFAULT_WIDTH = 30;
 
 	private uint height;
 	private uint width;

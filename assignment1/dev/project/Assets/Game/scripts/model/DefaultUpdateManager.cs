@@ -10,7 +10,7 @@ public class DefaultUpdateManager : IUpdateManager
     [Inject]
     public UpdateAllSnakesSignal updateSnakesSignal { get; set; }
 
-    private const uint MILLISECONDS_BETWEEN_MOVE = 250;
+    private const uint MILLISECONDS_BETWEEN_MOVE = 400;
     private Timer moveTimer;
 
     public void Initialize()
