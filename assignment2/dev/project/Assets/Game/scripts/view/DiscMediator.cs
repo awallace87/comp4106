@@ -1,0 +1,19 @@
+﻿using UnityEngine;
+using System.Collections;
+using strange.extensions.mediation.impl;
+
+public class DiscMediator : Mediator 
+{
+	[Inject]
+	public DiscView view { get; set; }
+
+	[Inject]
+	public IGameManager gameManager { get; set; }
+
+	public override void OnRegister ()
+	{
+		DiscColour initalDiscColour = gameManager.GetGameBoard ().Board [view.discPosition.X, view.discPosition.Y].Disc.Colour;
+
+		view.Initialize (initalDiscColour);
+	}
+}

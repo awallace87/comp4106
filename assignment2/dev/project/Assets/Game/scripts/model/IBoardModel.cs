@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class IBoardModel : MonoBehaviour {
+public interface IBoardModel
+{
+	IBoardSquareModel[,] Board { get; set; }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	IList<GridPosition> GetLegalMoves(DiscColour player);
 }

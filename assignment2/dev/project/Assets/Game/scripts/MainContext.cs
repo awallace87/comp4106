@@ -28,18 +28,39 @@ public class MainContext : SignalContext
 
     void mapMediationBindings()
     {
+		mediationBinder.Bind<BoardSquareView> ().To<BoardSquareMediator> ();
+		mediationBinder.Bind<DiscView> ().To<DiscMediator> ();
     }
 
     void mapInjectionBindings()
     {
+		injectionBinder.Bind<IPlayer> ().To<HumanPlayer> ().ToName (PlayerType.Human);
+		injectionBinder.Bind<IPlayer> ().To<AIPlayer> ().ToName (PlayerType.Computer);
 
+		injectionBinder.Bind<IBoardModel> ().To<DefaultBoardModel> ();
+		injectionBinder.Bind<IDiscModel> ().To<DefaultDiscModel> ();
+		injectionBinder.Bind<IBoardSquareModel> ().To<DefaultBoardSquareModel> ();
+
+		injectionBinder.Bind<IGameManager> ().To<DefaultGameManager> ().ToSingleton ();
+		injectionBinder.Bind<IResourceNameManager> ().To<DefaultResourceNameManager> ().ToSingleton ();
     }
 
     void mapCommandBindings()
     {
         commandBinder.Bind<GameStartSignal>()
+			.To<InitializeGameBoardCommand>()
+			.To<CreateBoardViewCommand>()
+			.To<AddInitialDiscsCommand>()
             .InSequence()
             .Once();
+
+		commandBinder.Bind<CreateBoardSquareViewSignal> ().To<CreateBoardSquareViewCommand> ();
+		commandBinder.Bind<CreateDiscSignal> ()
+			.To<CreateDiscCommand> ()
+			.To<CreateDiscViewCommand> ()
+			.InSequence ();
+
+		commandBinder.Bind<GameEndSignal> ();
 
     }
 
