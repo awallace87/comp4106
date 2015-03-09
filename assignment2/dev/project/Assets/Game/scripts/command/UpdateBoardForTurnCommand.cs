@@ -13,7 +13,7 @@ public class UpdateBoardForTurnCommand : Command
         IGameManager gameManager = injectionBinder.GetInstance<IGameManager>() as IGameManager;
         IList<GridPosition> legalMoves = gameManager.GetGameBoard().GetLegalMoves(currentPlayer);
 
-        Debug.Log("Legal Moves for " + currentPlayer.ToString() + "- " + legalMoves.Count);
+        //Debug.Log("Legal Moves for " + currentPlayer.ToString() + "- " + legalMoves.Count);
 
         foreach (GridPosition legalPosition in legalMoves)
         {

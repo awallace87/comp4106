@@ -2,6 +2,7 @@
 using System.Collections;
 using strange.extensions.command.impl;
 using System.Collections.Generic;
+using System;
 
 public class MakeAIMoveCommand : Command 
 {
@@ -9,92 +10,59 @@ public class MakeAIMoveCommand : Command
     public DiscColour turnToPlay { get; set; }
 
     private uint numOfNodes = 0;
+    private uint numOfBreaks = 0;
  
     public override void Execute()
     {
         IGameManager gameManager = injectionBinder.GetInstance<IGameManager>() as IGameManager;
 
-        //Debug.Log("Total Mobility for " + turnToPlay.ToString() + " is " + CalculateTotalMobility(gameManager.GetGameBoard(), turnToPlay));
-        //MoveInformation searchMove = MinimaxSearch(turnToPlay, gameManager.GetGameBoard(), 2);
-        MoveInformation searchMove = AlphaBetaSearch(turnToPlay, gameManager.GetGameBoard(), 4, int.MinValue, int.MaxValue);
-
-        Debug.Log("Next Move Found for " + turnToPlay.ToString() + " @ " + searchMove.PlayPosition.ToString());
-        Debug.Log("Move found with " + numOfNodes + " nodes searched");
-        PlayMove(searchMove.PlayPosition);
-    }
-
-    private void PlayMove(GridPosition foundPosition)
-    {
-        PlayTurnSignal playSignal = injectionBinder.GetInstance<PlayTurnSignal>() as PlayTurnSignal;
-        playSignal.Dispatch(foundPosition, turnToPlay);
-    }
-
-    
-    private MoveInformation MinimaxSearch(DiscColour player, IBoardModel board, uint depth)
-    {
-        numOfNodes++;
-
-        MoveInformation bestMove = new MoveInformation();
-        IList<GridPosition> availableMoves = board.GetLegalMoves(player);
-
-        if(depth == 0)
+        IPlayer currentPlayer;
+        if(turnToPlay == DiscColour.White)
         {
-            bestMove.MobilityDifference = GetWeightedScoreDifference(board);
-            //bestMove.MobilityDifference = GetMobilityDifference(board);
-            return bestMove;
-        }
-
-        int initialSetting;
-        if( player == turnToPlay)
-        {
-            initialSetting = int.MinValue;
+            currentPlayer = gameManager.WhitePlayer;
         }
         else
         {
-            initialSetting = int.MaxValue;
+            currentPlayer = gameManager.BlackPlayer;
         }
 
-        bestMove.MobilityDifference = initialSetting;
+        GridPosition playPosition = GetBestPlay(turnToPlay, gameManager.GetGameBoard(), currentPlayer.GetPlayMethod()); 
 
-
-        foreach (GridPosition legalMove in availableMoves)
+        //Debug.Log("Next Move Found for " + turnToPlay.ToString() + " @ " + searchMove.PlayPosition.ToString());
+        Debug.Log("Move found with " + numOfNodes + " nodes searched and " + numOfBreaks + " breaks");
+        PlayMove(playPosition);
+    }
+    public GridPosition GetBestPlay(DiscColour player, IBoardModel board, PlayMethod search)
+    {
+        switch (search)
         {
-            IBoardModel moveBoard = makePlay(copy(board), legalMove, player);
-            MoveInformation nextMove = MinimaxSearch(GetOpponent(player), moveBoard, depth - 1);
-            if (player == turnToPlay)
-            {
-                if (nextMove.MobilityDifference > bestMove.MobilityDifference)
-                {
-                    bestMove.PlayPosition = legalMove;
-                    bestMove.MobilityDifference = nextMove.MobilityDifference;
-                }
-            }
-            else
-            {
-                if (nextMove.MobilityDifference < bestMove.MobilityDifference)
-                {
-                    bestMove.PlayPosition = legalMove;
-                    bestMove.MobilityDifference = nextMove.MobilityDifference;
-                }
-            }
+            case PlayMethod.MinimaxSearch: return BeginMinimaxSearch(player, board); break;
+            case PlayMethod.AlphaBeta: return BeginAlphaBetaSearch(player, board); break;
+            //case PlayMethod.IterativeDeepening: return BeginIterativeDeepeningSearch(player, board); break;
         }
-
-        return bestMove;
+        throw new System.NotImplementedException();
     }
 
-    private MoveInformation AlphaBetaSearch(DiscColour player, IBoardModel board, uint depth, int alpha, int beta)
+    private GridPosition BeginMinimaxSearch(DiscColour player, IBoardModel board)
     {
+        Debug.Log("Begin Minimax");
+        SearchNode root = MinimaxSearch(player, board, 3);
+        return root.bestMove;
+    }
+
+    private SearchNode MinimaxSearch(DiscColour player, IBoardModel board, uint depth)
+    {
+        SearchNode node = new SearchNode();
         numOfNodes++;
 
-        MoveInformation bestMove = new MoveInformation();
-        bestMove.Alpha = alpha;
-        bestMove.Beta = beta;
-        IList<GridPosition> availableMoves = board.GetLegalMoves(player);
+        node.board = board;
+        node.boardValue = GetWeightedScoreDifference(board);
+        //node.boardValue = GetMobilityDifference(board);
+        IList<GridPosition> availableMoves = node.board.GetLegalMoves(player);
 
-        if (depth == 0)
+        if (depth == 0 || availableMoves.Count <= 0)
         {
-            bestMove.MobilityDifference = GetMobilityDifference(board);
-            return bestMove;
+            return node;
         }
 
         int initialSetting;
@@ -107,48 +75,133 @@ public class MakeAIMoveCommand : Command
             initialSetting = int.MaxValue;
         }
 
-        bestMove.MobilityDifference = initialSetting;
+        node.boardValue = initialSetting;
 
 
         foreach (GridPosition legalMove in availableMoves)
         {
             IBoardModel moveBoard = makePlay(copy(board), legalMove, player);
-            MoveInformation nextMove = AlphaBetaSearch(GetOpponent(player), moveBoard, depth - 1, bestMove.Alpha, bestMove.Beta);
+            SearchNode nextMove = MinimaxSearch(GetOpponent(player), moveBoard, depth - 1);
             if (player == turnToPlay)
             {
-                if (nextMove.MobilityDifference > bestMove.MobilityDifference)
+                if (nextMove.boardValue > node.boardValue)
                 {
-                    bestMove.PlayPosition = legalMove;
-                    bestMove.MobilityDifference = nextMove.MobilityDifference;
-                }
-                if (nextMove.Alpha > bestMove.Alpha)
-                {
-                    bestMove.Alpha = nextMove.Alpha;
-                }
-                if (bestMove.Beta <= bestMove.Alpha)
-                {
-                    break;
+                    node.bestMove = legalMove;
+                    node.boardValue = nextMove.boardValue;
                 }
             }
             else
             {
-                if (nextMove.MobilityDifference < bestMove.MobilityDifference)
+                if (nextMove.boardValue < node.boardValue)
                 {
-                    bestMove.PlayPosition = legalMove;
-                    bestMove.MobilityDifference = nextMove.MobilityDifference;
+                    node.bestMove = legalMove;
+                    node.boardValue = nextMove.boardValue;
                 }
-                if (nextMove.Beta < bestMove.Beta)
+            }
+            //node.children.Add(legalMove, nextMove);
+        }
+
+        return node;
+    }
+
+    private GridPosition BeginAlphaBetaSearch(DiscColour player, IBoardModel board)
+    {
+        Debug.Log("Begin AlphaBeta");
+        SearchNode alphaBetaRoot = AlphaBetaSearch(player, board, 4, int.MinValue, int.MaxValue);
+        return alphaBetaRoot.bestMove;
+    }
+
+    private SearchNode AlphaBetaSearch(DiscColour player, IBoardModel board, uint depth, int alpha, int beta)
+    {
+        SearchNode node = new SearchNode();
+        numOfNodes++;
+
+        node.board = board;
+        node.boardValue = GetWeightedScoreDifference(board);
+
+        node.alpha = alpha;
+        node.beta = beta;
+
+        IList<GridPosition> availableMoves = board.GetLegalMoves(player);
+
+        if (depth == 0 || availableMoves.Count <= 0)
+        {
+            return node;
+        }
+
+        int initialSetting;
+        if (player == turnToPlay)
+        {
+            initialSetting = int.MinValue;
+        }
+        else
+        {
+            initialSetting = int.MaxValue;
+        }
+        node.boardValue = initialSetting;
+
+        foreach (GridPosition legalMove in availableMoves)
+        {
+            IBoardModel moveBoard = makePlay(copy(board), legalMove, player);
+            SearchNode nextMove = AlphaBetaSearch(GetOpponent(player), moveBoard, depth - 1, node.alpha, node.beta);
+            if (player == turnToPlay)
+            {
+                if (nextMove.boardValue > node.boardValue)
                 {
-                    bestMove.Beta = nextMove.Beta;
+                    node.bestMove = legalMove;
+                    node.boardValue = nextMove.boardValue;
                 }
-                if (bestMove.Beta <= bestMove.Alpha)
+
+                node.alpha = Math.Max(node.alpha, node.boardValue);
+            }
+            else
+            {
+                if (nextMove.boardValue < node.boardValue)
                 {
-                    break;
+                    node.bestMove = legalMove;
+                    node.boardValue = nextMove.boardValue;
                 }
+
+                node.beta = Math.Min(node.beta, node.boardValue);
+            }
+
+            if (node.beta <= node.alpha)
+            {
+                numOfBreaks++;
+                break;
             }
         }
 
-        return bestMove;
+        return node;
+    }
+    /*
+    private GridPosition BeginIterativeDeepeningSearch(DiscColour player, IBoardModel board)
+    {
+
+    }*/
+
+    private class SearchNode
+    {
+        public IBoardModel board { get; set; }
+        public int boardValue { get; set; }
+        public DiscColour player { get; set; }
+        public Dictionary<GridPosition, SearchNode> children { get; set; }
+        public GridPosition bestMove { get; set; }
+
+        public int alpha { get; set; }
+        public int beta { get; set; }
+
+        public SearchNode()
+        {
+            children = new Dictionary<GridPosition,SearchNode>();
+        }
+    }
+
+
+    private void PlayMove(GridPosition foundPosition)
+    {
+        PlayTurnSignal playSignal = injectionBinder.GetInstance<PlayTurnSignal>() as PlayTurnSignal;
+        playSignal.Dispatch(foundPosition, turnToPlay);
     }
 
     private IBoardModel makePlay(IBoardModel originalBoard, GridPosition playLocation, DiscColour player)
@@ -245,13 +298,4 @@ public class MakeAIMoveCommand : Command
 		duplicate.Colour = original.Colour;
 		return duplicate;
 	}
-
-    private class MoveInformation
-    {
-        public GridPosition PlayPosition;
-        public int MobilityDifference;
-        public int Alpha;
-        public int Beta;
-    }
-
 }

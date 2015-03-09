@@ -5,6 +5,6 @@ public class AIPlayer : IPlayer
 {
     public PlayMethod GetPlayMethod()
     {
-        return PlayMethod.MinimaxSearch;
+        return PlayMethod.AlphaBeta;
     }
 }

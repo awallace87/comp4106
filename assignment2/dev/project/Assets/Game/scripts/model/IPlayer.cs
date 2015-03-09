@@ -15,5 +15,7 @@ public enum PlayerType
 public enum PlayMethod
 {
     UserInput,
-    MinimaxSearch
+    MinimaxSearch,
+    AlphaBeta,
+    IterativeDeepening
 }

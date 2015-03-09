@@ -27,7 +27,7 @@ public class BoardSquareMediator : Mediator
 
     private void onViewSelected()
     {
-        Debug.Log("BoardSquare Selected - " + view.BoardSquarePosition.ToString());
+        //Debug.Log("BoardSquare Selected - " + view.BoardSquarePosition.ToString());
         //BoardSquareState modelState = gameManager.GetGameBoard().Board[view.BoardSquarePosition.X, view.BoardSquarePosition.Y].State;
 
         boardSquarePressedSignal.Dispatch(view.BoardSquarePosition);

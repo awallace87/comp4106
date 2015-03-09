@@ -9,7 +9,7 @@ public class StartTurnCommand : Command
 
     public override void Execute()
     {
-        Debug.Log("Start Turn");
+        //Debug.Log("Start Turn");
    		IGameManager gameManager = injectionBinder.GetInstance<IGameManager> () as IGameManager;
 
         if (gameManager.GetGameBoard().GetLegalMoves(turnToPlay).Count > 0)
@@ -37,6 +37,7 @@ public class StartTurnCommand : Command
         {
             case PlayMethod.UserInput: BeginUserInputTurn(); break;
             case PlayMethod.MinimaxSearch: BeginMinimaxSearchTurn(); break;
+            case PlayMethod.AlphaBeta: BeginMinimaxSearchTurn(); break;
         }
     }
 
