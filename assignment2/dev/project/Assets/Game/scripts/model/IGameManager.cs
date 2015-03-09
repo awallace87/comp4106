@@ -8,5 +8,7 @@ public interface IGameManager
     DiscColour CurrentTurn { get; set; }
 
 	IPlayer WhitePlayer{ get; set; }
-	IPlayer BlackPlayer{ get; set; }
+    IPlayer BlackPlayer { get; set; }
+
+    bool SkippedLastTurn { get; set; }
 }

@@ -11,6 +11,7 @@ public class DefaultBoardModel : IBoardModel
 	public DefaultBoardModel()
 	{
         boardSize = OthelloConstants.StandardBoardSize;
+        board = new IBoardSquareModel[boardSize, boardSize];
 	}
 	
 	#region IBoardModel implementation
@@ -78,7 +79,7 @@ public class DefaultBoardModel : IBoardModel
 	{
         try
         {
-            bool inBounds = x < boardSize || y < boardSize;
+            bool inBounds = x < boardSize && y < boardSize;
             return inBounds;
         }
         catch (IndexOutOfRangeException e)

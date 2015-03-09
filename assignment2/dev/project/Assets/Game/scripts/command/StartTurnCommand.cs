@@ -12,15 +12,23 @@ public class StartTurnCommand : Command
         Debug.Log("Start Turn");
    		IGameManager gameManager = injectionBinder.GetInstance<IGameManager> () as IGameManager;
 
-        PlayMethod method = PlayMethod.UserInput;
-
-        switch (turnToPlay)
+        if (gameManager.GetGameBoard().GetLegalMoves(turnToPlay).Count > 0)
         {
-            case DiscColour.White: method = gameManager.WhitePlayer.GetPlayMethod(); break;
-            case DiscColour.Black: method = gameManager.BlackPlayer.GetPlayMethod(); break;
-        }
+            gameManager.SkippedLastTurn = false;
+            PlayMethod method = PlayMethod.UserInput;
 
-        GetNextMove(method);
+            switch (turnToPlay)
+            {
+                case DiscColour.White: method = gameManager.WhitePlayer.GetPlayMethod(); break;
+                case DiscColour.Black: method = gameManager.BlackPlayer.GetPlayMethod(); break;
+            }
+
+            GetNextMove(method);
+        }
+        else
+        {
+            SkipCurrentTurn(gameManager);
+        }
     }
 
     private void GetNextMove(PlayMethod method)
@@ -43,5 +51,20 @@ public class StartTurnCommand : Command
     {
         MakeAIMoveSignal signal = injectionBinder.GetInstance<MakeAIMoveSignal>() as MakeAIMoveSignal;
         signal.Dispatch(turnToPlay);
+    }
+
+    private void SkipCurrentTurn(IGameManager gameManager)
+    {
+        if (gameManager.SkippedLastTurn)
+        {
+            //End of Game
+            //TODO Handle case
+        }
+        else
+        {
+            gameManager.SkippedLastTurn = true;
+            SkipTurnSignal skipSignal = injectionBinder.GetInstance<SkipTurnSignal>() as SkipTurnSignal;
+            skipSignal.Dispatch();
+        }
     }
 }

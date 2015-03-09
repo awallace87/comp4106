@@ -25,7 +25,6 @@ public class BoardSquareMediator : Mediator
         mediatorRegisteredSignal.Dispatch();
 	}
 
-	//TODO Create Callbacks
     private void onViewSelected()
     {
         Debug.Log("BoardSquare Selected - " + view.BoardSquarePosition.ToString());

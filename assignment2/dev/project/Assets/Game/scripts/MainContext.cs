@@ -72,6 +72,9 @@ public class MainContext : SignalContext
             .To<EndTurnCommand>()
             .InSequence();
 
+        commandBinder.Bind<SkipTurnSignal>()
+            .To<EndTurnCommand>();
+
         commandBinder.Bind<MakeUserInputMoveSignal>()
             .To<EnableUserInputCommand>()
             .To<UpdateBoardForTurnCommand>()

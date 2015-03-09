@@ -11,6 +11,8 @@ public class DefaultGameManager : IGameManager
 	IPlayer whitePlayer;
 	IPlayer blackPlayer;
 
+    bool skippedLastTurn;
+
     [Inject]
     public StartTurnSignal playTurnSignal { get; set; }
 
@@ -56,5 +58,17 @@ public class DefaultGameManager : IGameManager
 			blackPlayer = value;
 		}
 	}
+
+    public bool SkippedLastTurn
+    {
+        get
+        {
+            return skippedLastTurn;
+        }
+        set
+        {
+            skippedLastTurn = value;
+        }
+    }
 	#endregion
 }
