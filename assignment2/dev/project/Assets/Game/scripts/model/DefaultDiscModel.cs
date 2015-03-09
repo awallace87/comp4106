@@ -32,7 +32,6 @@ public class DefaultDiscModel : IDiscModel
 		else {
             this.colour = DiscColour.Black;
 		}
-        Debug.Log("1");
         this.discFlippedSignal.Dispatch(colour);
 	}
 
