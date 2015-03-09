@@ -42,7 +42,7 @@ public class StartTurnCommand : Command
 
     private void BeginUserInputTurn()
     {
-        Debug.Log("Begin User Input");
+        //Debug.Log("Begin User Input");
         MakeUserInputMoveSignal signal = injectionBinder.GetInstance<MakeUserInputMoveSignal>() as MakeUserInputMoveSignal;
         signal.Dispatch(turnToPlay);
     }

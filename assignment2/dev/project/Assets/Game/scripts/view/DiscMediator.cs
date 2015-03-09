@@ -20,7 +20,7 @@ public class DiscMediator : Mediator
 
     private void OnDiscModelFlipped(DiscColour colour)
     {
-        Debug.Log("Disc Model Flipped");
+        //Debug.Log("Disc Model Flipped");
         view.DiscFlippedSignal.Dispatch(colour);
     }
 }

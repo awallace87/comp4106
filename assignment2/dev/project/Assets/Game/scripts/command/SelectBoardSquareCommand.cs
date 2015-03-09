@@ -23,7 +23,7 @@ public class SelectBoardSquareCommand : Command
     private void UpdateAffectedBoardSquares()
     {
         IList<GridPosition> affectedPositions = gameManager.GetGameBoard().GetAffectedDiscPositions(gameManager.CurrentTurn, selectPosition);
-        Debug.Log("Number of Affected Discs - " + affectedPositions.Count);
+        //Debug.Log("Number of Affected Discs - " + affectedPositions.Count);
 
         foreach (GridPosition position in affectedPositions)
         {
