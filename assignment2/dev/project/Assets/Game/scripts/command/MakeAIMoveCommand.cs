@@ -15,7 +15,9 @@ public class MakeAIMoveCommand : Command
         IGameManager gameManager = injectionBinder.GetInstance<IGameManager>() as IGameManager;
 
         //Debug.Log("Total Mobility for " + turnToPlay.ToString() + " is " + CalculateTotalMobility(gameManager.GetGameBoard(), turnToPlay));
-        MoveInformationTuple searchMove = MinimaxSearch(turnToPlay, gameManager.GetGameBoard(), 3);
+        //MoveInformation searchMove = MinimaxSearch(turnToPlay, gameManager.GetGameBoard(), 2);
+        MoveInformation searchMove = AlphaBetaSearch(turnToPlay, gameManager.GetGameBoard(), 4, int.MinValue, int.MaxValue);
+
         Debug.Log("Next Move Found for " + turnToPlay.ToString() + " @ " + searchMove.PlayPosition.ToString());
         Debug.Log("Move found with " + numOfNodes + " nodes searched");
         PlayMove(searchMove.PlayPosition);
@@ -28,16 +30,17 @@ public class MakeAIMoveCommand : Command
     }
 
     
-    private MoveInformationTuple MinimaxSearch(DiscColour player, IBoardModel board, uint depth)
+    private MoveInformation MinimaxSearch(DiscColour player, IBoardModel board, uint depth)
     {
         numOfNodes++;
 
-        MoveInformationTuple bestMove = new MoveInformationTuple();
+        MoveInformation bestMove = new MoveInformation();
         IList<GridPosition> availableMoves = board.GetLegalMoves(player);
 
         if(depth == 0)
         {
-            bestMove.MobilityDifference = GetMobilityDifference(board);
+            bestMove.MobilityDifference = GetWeightedScoreDifference(board);
+            //bestMove.MobilityDifference = GetMobilityDifference(board);
             return bestMove;
         }
 
@@ -57,7 +60,7 @@ public class MakeAIMoveCommand : Command
         foreach (GridPosition legalMove in availableMoves)
         {
             IBoardModel moveBoard = makePlay(copy(board), legalMove, player);
-            MoveInformationTuple nextMove = MinimaxSearch(GetOpponent(player), moveBoard, depth - 1);
+            MoveInformation nextMove = MinimaxSearch(GetOpponent(player), moveBoard, depth - 1);
             if (player == turnToPlay)
             {
                 if (nextMove.MobilityDifference > bestMove.MobilityDifference)
@@ -72,6 +75,75 @@ public class MakeAIMoveCommand : Command
                 {
                     bestMove.PlayPosition = legalMove;
                     bestMove.MobilityDifference = nextMove.MobilityDifference;
+                }
+            }
+        }
+
+        return bestMove;
+    }
+
+    private MoveInformation AlphaBetaSearch(DiscColour player, IBoardModel board, uint depth, int alpha, int beta)
+    {
+        numOfNodes++;
+
+        MoveInformation bestMove = new MoveInformation();
+        bestMove.Alpha = alpha;
+        bestMove.Beta = beta;
+        IList<GridPosition> availableMoves = board.GetLegalMoves(player);
+
+        if (depth == 0)
+        {
+            bestMove.MobilityDifference = GetMobilityDifference(board);
+            return bestMove;
+        }
+
+        int initialSetting;
+        if (player == turnToPlay)
+        {
+            initialSetting = int.MinValue;
+        }
+        else
+        {
+            initialSetting = int.MaxValue;
+        }
+
+        bestMove.MobilityDifference = initialSetting;
+
+
+        foreach (GridPosition legalMove in availableMoves)
+        {
+            IBoardModel moveBoard = makePlay(copy(board), legalMove, player);
+            MoveInformation nextMove = AlphaBetaSearch(GetOpponent(player), moveBoard, depth - 1, bestMove.Alpha, bestMove.Beta);
+            if (player == turnToPlay)
+            {
+                if (nextMove.MobilityDifference > bestMove.MobilityDifference)
+                {
+                    bestMove.PlayPosition = legalMove;
+                    bestMove.MobilityDifference = nextMove.MobilityDifference;
+                }
+                if (nextMove.Alpha > bestMove.Alpha)
+                {
+                    bestMove.Alpha = nextMove.Alpha;
+                }
+                if (bestMove.Beta <= bestMove.Alpha)
+                {
+                    break;
+                }
+            }
+            else
+            {
+                if (nextMove.MobilityDifference < bestMove.MobilityDifference)
+                {
+                    bestMove.PlayPosition = legalMove;
+                    bestMove.MobilityDifference = nextMove.MobilityDifference;
+                }
+                if (nextMove.Beta < bestMove.Beta)
+                {
+                    bestMove.Beta = nextMove.Beta;
+                }
+                if (bestMove.Beta <= bestMove.Alpha)
+                {
+                    break;
                 }
             }
         }
@@ -100,6 +172,29 @@ public class MakeAIMoveCommand : Command
         uint maximizePlayer = CalculateTotalMobility(board, turnToPlay);
         uint minimizePlayer = CalculateTotalMobility(board, GetOpponent(turnToPlay));
         return (int)maximizePlayer - (int)minimizePlayer;
+    }
+
+    private int GetWeightedScoreDifference(IBoardModel board)
+    {
+        int maxPlayerScore = GetWeightedScore(board, turnToPlay);
+        int minPlayerScore = GetWeightedScore(board, GetOpponent(turnToPlay));
+        return maxPlayerScore - minPlayerScore;
+    }
+
+    private int GetWeightedScore(IBoardModel board, DiscColour player)
+    {
+        int score = 0;
+        for (int i = 0; i < board.BoardSize; i++)
+        {
+            for (int j = 0; j < board.BoardSize; j++)
+            {
+                if (board.Board[i, j].ContainsDisc() && board.Board[i, j].Disc.Colour == player)
+                {
+                    score += (int)board.Board[i, j].MobilityScore;
+                }
+            }
+        }
+        return score;
     }
 
     private uint CalculateTotalMobility(IBoardModel board, DiscColour player)
@@ -151,10 +246,12 @@ public class MakeAIMoveCommand : Command
 		return duplicate;
 	}
 
-    private class MoveInformationTuple
+    private class MoveInformation
     {
         public GridPosition PlayPosition;
         public int MobilityDifference;
+        public int Alpha;
+        public int Beta;
     }
 
 }

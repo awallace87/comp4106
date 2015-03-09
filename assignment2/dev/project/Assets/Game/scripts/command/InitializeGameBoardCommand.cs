@@ -51,7 +51,7 @@ public class InitializeGameBoardCommand : Command {
         //Give corners extra value
         if ((x == 0 || x == (weightScale - 1)) && (y == 0 || y == (weightScale - 1))) 
         {
-            totalDistance--;
+            totalDistance -= 2;
         }
 
 
