@@ -15,7 +15,7 @@ public class MakeAIMoveCommand : Command
         IGameManager gameManager = injectionBinder.GetInstance<IGameManager>() as IGameManager;
 
         //Debug.Log("Total Mobility for " + turnToPlay.ToString() + " is " + CalculateTotalMobility(gameManager.GetGameBoard(), turnToPlay));
-        MoveInformationTuple searchMove = MinimaxSearch(turnToPlay, gameManager.GetGameBoard(), 6);
+        MoveInformationTuple searchMove = MinimaxSearch(turnToPlay, gameManager.GetGameBoard(), 3);
         Debug.Log("Next Move Found for " + turnToPlay.ToString() + " @ " + searchMove.PlayPosition.ToString());
         Debug.Log("Move found with " + numOfNodes + " nodes searched");
         PlayMove(searchMove.PlayPosition);
@@ -35,7 +35,7 @@ public class MakeAIMoveCommand : Command
         MoveInformationTuple bestMove = new MoveInformationTuple();
         IList<GridPosition> availableMoves = board.GetLegalMoves(player);
 
-        if(depth == 0 || availableMoves.Count <= 0)
+        if(depth == 0)
         {
             bestMove.MobilityDifference = GetMobilityDifference(board);
             return bestMove;
@@ -138,11 +138,18 @@ public class MakeAIMoveCommand : Command
     {
         IBoardSquareModel duplicate = injectionBinder.GetInstance<IBoardSquareModel>() as IBoardSquareModel;
         duplicate.MobilityScore = original.MobilityScore;
-        duplicate.Disc = original.Disc;
+		if (original.Disc != null) { duplicate.Disc = copy (original.Disc); }
         duplicate.State = original.State;
 
         return duplicate;
     }
+
+	private IDiscModel copy(IDiscModel original)
+	{
+		IDiscModel duplicate = injectionBinder.GetInstance<IDiscModel> () as IDiscModel;
+		duplicate.Colour = original.Colour;
+		return duplicate;
+	}
 
     private class MoveInformationTuple
     {
