@@ -19,9 +19,17 @@ public class BoardSquareView : View
         get { return boardSquareStateChangedSignal; }
     }
 
+    [Inject]
+    public IResourceNameManager resourceManager { get; set; }
+
+    private Sprite[] boardSquareSprites;
+
 	internal void Initialize()
 	{
-		//Adjust Position
+        boardSquareSprites = Resources.LoadAll<Sprite>(resourceManager.GetResourceName(ResourceID.BoardSquareSprite));
+        SetToDefault();
+
+        //Adjust Position
 		Vector3 localPosition = transform.localPosition;
 		localPosition.x = BoardSquarePosition.X;
 		localPosition.y = BoardSquarePosition.Y;
@@ -52,22 +60,22 @@ public class BoardSquareView : View
 
     private void SetToDefault()
     {
-        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<SpriteRenderer>().sprite = boardSquareSprites[0];
     }
 
     private void SetToAvailable()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<SpriteRenderer>().sprite = boardSquareSprites[1];
     }
 
     private void SetToAffected()
     {
-
+        GetComponent<SpriteRenderer>().sprite = boardSquareSprites[2];
     }
 
     private void SetToSelected()
     {
-
+        GetComponent<SpriteRenderer>().sprite = boardSquareSprites[2];
     }
 
 }

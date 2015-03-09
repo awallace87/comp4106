@@ -55,6 +55,8 @@
      <Compile Include="Assets\Game\scripts\command\CreateBoardViewCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\CreateDiscCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\CreateDiscViewCommand.cs" />
+     <Compile Include="Assets\Game\scripts\command\DisableUserInputCommand.cs" />
+     <Compile Include="Assets\Game\scripts\command\EnableUserInputCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\EndTurnCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\FlipAffectedDiscsCommand.cs" />
      <Compile Include="Assets\Game\scripts\command\InitializeGameBoardCommand.cs" />

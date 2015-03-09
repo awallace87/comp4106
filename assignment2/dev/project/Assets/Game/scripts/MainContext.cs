@@ -73,11 +73,13 @@ public class MainContext : SignalContext
             .InSequence();
 
         commandBinder.Bind<MakeUserInputMoveSignal>()
+            .To<EnableUserInputCommand>()
             .To<UpdateBoardForTurnCommand>()
             .To<MakeUserInputMoveCommand>()
             .InSequence();
 
         commandBinder.Bind<MakeAIMoveSignal>()
+            .To<DisableUserInputCommand>()
             .To<UpdateBoardForTurnCommand>()
             .To<MakeAIMoveCommand>()
             .InSequence();

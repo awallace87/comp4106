@@ -14,6 +14,7 @@ public class DefaultResourceNameManager : IResourceNameManager
 		case ResourceID.ContextGO: resourceName = ResourceNames.ContextGameObject; break;
 		case ResourceID.BoardSquarePrefab: resourceName = ResourceNames.BoardSquarePrefab; break;
 		case ResourceID.OthelloDiscPrefab: resourceName = ResourceNames.OthelloDiscPrefab; break;
+        case ResourceID.BoardSquareSprite: resourceName = ResourceNames.BoardSquareSprite; break;
 		}
 
 		return resourceName;

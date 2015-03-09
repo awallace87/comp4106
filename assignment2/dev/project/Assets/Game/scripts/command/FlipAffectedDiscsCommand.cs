@@ -17,17 +17,14 @@ public class FlipAffectedDiscsCommand : Command
     public override void Execute()
     {
         IList<GridPosition> affectedPositions = gameManager.GetGameBoard().GetAffectedDiscPositions(playColour, playPosition);
-        Debug.Log("4");
         foreach (GridPosition position in affectedPositions)
         {
-            Debug.Log("5");
             FlipDisc(position);
         }
     }
 
     private void FlipDisc(GridPosition flipPosition)
     {
-        Debug.Log("2");
         gameManager.GetGameBoard().Board[flipPosition.X, flipPosition.Y].Disc.Flip();
     }
 }

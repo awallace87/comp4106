@@ -6,6 +6,7 @@ public class ResourceNames {
 	public const string BoardGameObject = "board";
 	public const string BoardSquarePrefab = "boardSquare";
 	public const string OthelloDiscPrefab = "othelloDisc";
+    public const string BoardSquareSprite = "boardSquareMulti";
 }
 
 public enum ResourceID
@@ -13,6 +14,7 @@ public enum ResourceID
 	BoardGO,
 	ContextGO,
 	BoardSquarePrefab,
-	OthelloDiscPrefab
+	OthelloDiscPrefab,
+    BoardSquareSprite
 }
 
