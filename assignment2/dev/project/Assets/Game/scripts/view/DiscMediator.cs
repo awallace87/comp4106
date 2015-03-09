@@ -13,7 +13,14 @@ public class DiscMediator : Mediator
 	public override void OnRegister ()
 	{
 		DiscColour initalDiscColour = gameManager.GetGameBoard ().Board [view.discPosition.X, view.discPosition.Y].Disc.Colour;
-
+        gameManager.GetGameBoard().Board[view.discPosition.X, view.discPosition.Y]
+            .Disc.OnDiscFlippedSignal.AddListener(OnDiscModelFlipped);
 		view.Initialize (initalDiscColour);
 	}
+
+    private void OnDiscModelFlipped(DiscColour colour)
+    {
+        Debug.Log("Disc Model Flipped");
+        view.DiscFlippedSignal.Dispatch(colour);
+    }
 }

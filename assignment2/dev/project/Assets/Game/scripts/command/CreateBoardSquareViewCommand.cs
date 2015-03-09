@@ -17,7 +17,7 @@ public class CreateBoardSquareViewCommand : Command
 		{
 			GameObject boardSquare = (GameObject) GameObject.Instantiate(Resources.Load(resourceNameManager.GetResourceName(ResourceID.BoardSquarePrefab)));
 			BoardSquareView boardSquareView = boardSquare.AddComponent<BoardSquareView>();
-			boardSquareView.boardSquarePosition = squarePosition;
+			boardSquareView.BoardSquarePosition = squarePosition;
 
 			boardSquare.transform.parent = GameObject.Find(resourceNameManager.GetResourceName(ResourceID.BoardGO)).transform;
 		};

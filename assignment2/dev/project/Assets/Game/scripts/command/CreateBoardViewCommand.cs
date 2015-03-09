@@ -3,8 +3,12 @@ using System.Collections;
 using strange.extensions.command.impl;
 using System;
 
-public class CreateBoardViewCommand : Command 
+public class CreateBoardViewCommand : Command
 {
+    [Inject]
+    public OnMediatorRegisteredSignal mediatorRegisteredSignal { get; set; }
+
+    private int viewsPendingRegistrationCount = 0;
 
 	public override void Execute ()
 	{
@@ -24,6 +28,9 @@ public class CreateBoardViewCommand : Command
 				CreateBoardSquareView (i, j);
 			}
 		}
+
+        mediatorRegisteredSignal.AddListener(onMediatorRegistered);
+        Retain();
 	}
 
 	private void CreateBoardSquareView(uint x, uint y)
@@ -31,5 +38,17 @@ public class CreateBoardViewCommand : Command
 		CreateBoardSquareViewSignal signal = injectionBinder.GetInstance<CreateBoardSquareViewSignal> () as CreateBoardSquareViewSignal;
 		GridPosition boardSquarePosition = new GridPosition (x, y);
 		signal.Dispatch (boardSquarePosition);
+        viewsPendingRegistrationCount++;
 	}
+
+    private void onMediatorRegistered()
+    {
+        //Debug.Log("Mediator Registered - Current Count : " + viewsPendingRegistrationCount);
+        viewsPendingRegistrationCount--;
+        if (viewsPendingRegistrationCount <= 0)
+        {
+            mediatorRegisteredSignal.RemoveListener(onMediatorRegistered);
+            Release();
+        }
+    }
 }

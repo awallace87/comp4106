@@ -3,11 +3,17 @@ using System.Collections;
 
 public interface IPlayer 
 {
-	DiscColour Colour {get; set;}
+    PlayMethod GetPlayMethod();
 }
 
 public enum PlayerType
 {
 	Human
 	, Computer
+}
+
+public enum PlayMethod
+{
+    UserInput,
+    MinimaxSearch
 }

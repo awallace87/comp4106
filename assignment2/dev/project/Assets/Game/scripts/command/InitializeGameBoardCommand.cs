@@ -17,6 +17,5 @@ public class InitializeGameBoardCommand : Command {
 				gameManager.GetGameBoard().Board[i,j].MobilityScore = 1;
 			}
 		}
-
 	}
 }

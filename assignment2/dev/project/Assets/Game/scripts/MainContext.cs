@@ -51,6 +51,7 @@ public class MainContext : SignalContext
 			.To<InitializeGameBoardCommand>()
 			.To<CreateBoardViewCommand>()
 			.To<AddInitialDiscsCommand>()
+            .To<InitializePlayersCommand>()
             .InSequence()
             .Once();
 
@@ -60,7 +61,30 @@ public class MainContext : SignalContext
 			.To<CreateDiscViewCommand> ()
 			.InSequence ();
 
+        commandBinder.Bind<StartTurnSignal>().To<StartTurnCommand>();
+        commandBinder.Bind<BoardSquarePressedSignal>().To<BoardSquareInputCommand>();
+        commandBinder.Bind<BoardSquareSelectedSignal>().To<SelectBoardSquareCommand>();
+        
+        commandBinder.Bind<PlayTurnSignal>()
+            .To<FlipAffectedDiscsCommand>()
+            .To<CreateDiscCommand>()
+            .To<CreateDiscViewCommand>()
+            .To<EndTurnCommand>()
+            .InSequence();
+
+        commandBinder.Bind<MakeUserInputMoveSignal>()
+            .To<UpdateBoardForTurnCommand>()
+            .To<MakeUserInputMoveCommand>()
+            .InSequence();
+
+        commandBinder.Bind<MakeAIMoveSignal>()
+            .To<UpdateBoardForTurnCommand>()
+            .To<MakeAIMoveCommand>()
+            .InSequence();
+
 		commandBinder.Bind<GameEndSignal> ();
+
+        commandBinder.Bind<OnMediatorRegisteredSignal>();
 
     }
 

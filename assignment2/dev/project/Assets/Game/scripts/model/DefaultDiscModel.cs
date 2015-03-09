@@ -9,29 +9,31 @@ public class DefaultDiscModel : IDiscModel
 
 	public DefaultDiscModel()
 	{
-		discFlippedSignal = new Signal<DiscColour> ();
+		this.discFlippedSignal = new Signal<DiscColour> ();
 	}
 
 	#region IDiscModel implementation
 
 	public DiscColour Colour {
 		get {
-			return colour;
+			return this.colour;
 		}
 		set {
-			colour = value;
+            this.colour = value;
 		}
 	}
 
 	public void Flip ()
 	{
-		if (colour == DiscColour.Black) {
-			colour = DiscColour.White;
+        if (this.colour == DiscColour.Black)
+        {
+            this.colour = DiscColour.White;
 		}
 		else {
-			colour = DiscColour.Black;
+            this.colour = DiscColour.Black;
 		}
-		OnDiscFlippedSignal.Dispatch (colour);
+        Debug.Log("1");
+        this.discFlippedSignal.Dispatch(colour);
 	}
 
 	public Signal<DiscColour> OnDiscFlippedSignal {

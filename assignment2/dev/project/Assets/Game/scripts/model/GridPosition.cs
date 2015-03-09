@@ -39,6 +39,30 @@ public class GridPosition {
             case GridDirection.Down: directionPosition.Y--; break;
             case GridDirection.Left: directionPosition.X--; break;
             case GridDirection.Right: directionPosition.X++; break;
+            case GridDirection.UpLeft:
+                {
+                    directionPosition.Y++;
+                    directionPosition.X--;
+                }
+                break;
+            case GridDirection.UpRight:
+                {
+                    directionPosition.Y++;
+                    directionPosition.X++;
+                }
+                break;
+            case GridDirection.DownRight:
+                {
+                    directionPosition.Y--;
+                    directionPosition.X++;
+                }
+                break;
+            case GridDirection.DownLeft:
+                {
+                    directionPosition.Y--;
+                    directionPosition.X--;
+                }
+                break;
         }
 
         return directionPosition;
@@ -79,8 +103,12 @@ public enum GridDirection
 	Invalid = -1,
     ValidDirectionStart,
 	Up = ValidDirectionStart,
+    UpLeft,
 	Left,
+    DownLeft,
     Down,
+    DownRight,
 	Right,
-    ValidDirectionEnd = Right
+    UpRight,
+    ValidDirectionEnd = UpRight
 }

@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public interface IBoardModel
 {
-	IBoardSquareModel[,] Board { get; set; }
+    IBoardSquareModel[,] Board { get; set; }
+    uint BoardSize { get; }
 
-	IList<GridPosition> GetLegalMoves(DiscColour player);
+    IList<GridPosition> GetLegalMoves(DiscColour player);
+    IList<GridPosition> GetAffectedDiscPositions(DiscColour player, GridPosition playLocation);
 }

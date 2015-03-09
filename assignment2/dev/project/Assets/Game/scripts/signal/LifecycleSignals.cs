@@ -5,3 +5,10 @@ using strange.extensions.signal.impl;
 public class GameStartSignal : Signal { }
 
 public class GameEndSignal : Signal { }
+
+public class StartTurnSignal : Signal<DiscColour> { }
+public class PlayTurnSignal : Signal<GridPosition, DiscColour> { }
+
+public class MakeUserInputMoveSignal : Signal<DiscColour> { }
+
+public class MakeAIMoveSignal : Signal<DiscColour> { }
