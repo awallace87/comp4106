@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AIPlayer : IPlayer
+public class ComputerMobilityPlayer : IPlayer 
 {
     public PlayMethod GetPlayMethod()
     {
-        return PlayMethod.AlphaBeta;
+        return PlayMethod.AlphaBetaMobility;
     }
 }

@@ -8,9 +8,9 @@ public class InitializePlayersCommand : Command
     {
         IGameManager gameManager = injectionBinder.GetInstance<IGameManager>() as IGameManager;
 
-        gameManager.WhitePlayer = injectionBinder.GetInstance<IPlayer>(PlayerType.Human) as IPlayer;
-        gameManager.BlackPlayer = injectionBinder.GetInstance<IPlayer>(PlayerType.Computer) as IPlayer;
+        gameManager.WhitePlayer = injectionBinder.GetInstance<IPlayer>(PlayerType.ComputerMobility) as IPlayer;
+        gameManager.BlackPlayer = injectionBinder.GetInstance<IPlayer>(PlayerType.ComputerScore) as IPlayer;
 
-        gameManager.CurrentTurn = DiscColour.White;
+        //gameManager.CurrentTurn = DiscColour.White;
     }
 }

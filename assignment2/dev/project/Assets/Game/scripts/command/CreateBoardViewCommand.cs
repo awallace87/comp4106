@@ -43,7 +43,7 @@ public class CreateBoardViewCommand : Command
 
     private void onMediatorRegistered()
     {
-        //Debug.Log("Mediator Registered - Current Count : " + viewsPendingRegistrationCount);
+        Debug.Log("Mediator Registered - Current Count : " + viewsPendingRegistrationCount);
         viewsPendingRegistrationCount--;
         if (viewsPendingRegistrationCount <= 0)
         {

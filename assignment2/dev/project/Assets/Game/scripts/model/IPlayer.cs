@@ -9,13 +9,15 @@ public interface IPlayer
 public enum PlayerType
 {
 	Human
-	, Computer
+	, ComputerScore
+    , ComputerMobility
 }
 
 public enum PlayMethod
 {
     UserInput,
-    MinimaxSearch,
-    AlphaBeta,
-    IterativeDeepening
+    AlphaBetaScore,
+    AlphaBetaMobility,
+    MinimaxScore,
+    MinimaxMobility
 }

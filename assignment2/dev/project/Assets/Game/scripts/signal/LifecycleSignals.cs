@@ -6,9 +6,12 @@ public class GameStartSignal : Signal { }
 
 public class GameEndSignal : Signal { }
 
+public class ContinueGameSignal : Signal { }
 public class StartTurnSignal : Signal<DiscColour> { }
 public class PlayTurnSignal : Signal<GridPosition, DiscColour> { }
 public class SkipTurnSignal : Signal { }
+
+public class GameOverSignal : Signal { }
 
 public class MakeUserInputMoveSignal : Signal<DiscColour> { }
 

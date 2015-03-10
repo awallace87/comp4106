@@ -11,6 +11,12 @@ public class MakeAIMoveCommand : Command
 
     private uint numOfNodes = 0;
     private uint numOfBreaks = 0;
+
+    public enum Heuristic
+    {
+        Score
+        , Mobility
+    }
  
     public override void Execute()
     {
@@ -28,35 +34,64 @@ public class MakeAIMoveCommand : Command
 
         GridPosition playPosition = GetBestPlay(turnToPlay, gameManager.GetGameBoard(), currentPlayer.GetPlayMethod()); 
 
-        //Debug.Log("Next Move Found for " + turnToPlay.ToString() + " @ " + searchMove.PlayPosition.ToString());
         Debug.Log("Move found with " + numOfNodes + " nodes searched and " + numOfBreaks + " breaks");
         PlayMove(playPosition);
     }
-    public GridPosition GetBestPlay(DiscColour player, IBoardModel board, PlayMethod search)
+
+    private GridPosition GetBestPlay(DiscColour player, IBoardModel board, PlayMethod search)
     {
         switch (search)
         {
-            case PlayMethod.MinimaxSearch: return BeginMinimaxSearch(player, board); break;
-            case PlayMethod.AlphaBeta: return BeginAlphaBetaSearch(player, board); break;
-            //case PlayMethod.IterativeDeepening: return BeginIterativeDeepeningSearch(player, board); break;
+            case PlayMethod.MinimaxMobility:
+            case PlayMethod.MinimaxScore:
+                return BeginMinimaxSearch(player, board, GetHeuristic(search)); 
+            case PlayMethod.AlphaBetaMobility:
+            case PlayMethod.AlphaBetaScore:
+                return BeginAlphaBetaSearch(player, board, GetHeuristic(search)); 
         }
         throw new System.NotImplementedException();
     }
 
-    private GridPosition BeginMinimaxSearch(DiscColour player, IBoardModel board)
+    private Heuristic GetHeuristic(PlayMethod search)
+    {
+        Heuristic heuristic = Heuristic.Score;
+        switch (search)
+        {
+            case PlayMethod.AlphaBetaMobility:
+            case PlayMethod.MinimaxMobility:
+                heuristic = Heuristic.Mobility;
+                break;
+            case PlayMethod.AlphaBetaScore:
+            case PlayMethod.MinimaxScore:
+                heuristic = Heuristic.Score;
+                break;
+        }
+        return heuristic;
+    }
+
+    private GridPosition BeginMinimaxSearch(DiscColour player, IBoardModel board, Heuristic heuristic)
     {
         Debug.Log("Begin Minimax");
-        SearchNode root = MinimaxSearch(player, board, 3);
+        SearchNode root;
+        if (heuristic == Heuristic.Score)
+        {
+            root = MinimaxSearch(player, board, 3, GetWeightedScoreDifference);
+        }
+        else
+        {
+            root = MinimaxSearch(player, board, 3, GetMobilityDifference);
+        }
+
         return root.bestMove;
     }
 
-    private SearchNode MinimaxSearch(DiscColour player, IBoardModel board, uint depth)
+    private SearchNode MinimaxSearch(DiscColour player, IBoardModel board, uint depth, Func<IBoardModel,int> heuristic)
     {
         SearchNode node = new SearchNode();
         numOfNodes++;
 
         node.board = board;
-        node.boardValue = GetWeightedScoreDifference(board);
+        node.boardValue = heuristic(board);
         //node.boardValue = GetMobilityDifference(board);
         IList<GridPosition> availableMoves = node.board.GetLegalMoves(player);
 
@@ -81,7 +116,7 @@ public class MakeAIMoveCommand : Command
         foreach (GridPosition legalMove in availableMoves)
         {
             IBoardModel moveBoard = makePlay(copy(board), legalMove, player);
-            SearchNode nextMove = MinimaxSearch(GetOpponent(player), moveBoard, depth - 1);
+            SearchNode nextMove = MinimaxSearch(GetOpponent(player), moveBoard, depth - 1, heuristic);
             if (player == turnToPlay)
             {
                 if (nextMove.boardValue > node.boardValue)
@@ -98,26 +133,34 @@ public class MakeAIMoveCommand : Command
                     node.boardValue = nextMove.boardValue;
                 }
             }
-            //node.children.Add(legalMove, nextMove);
+            node.children.Add(legalMove, nextMove);
         }
 
         return node;
     }
 
-    private GridPosition BeginAlphaBetaSearch(DiscColour player, IBoardModel board)
+    private GridPosition BeginAlphaBetaSearch(DiscColour player, IBoardModel board, Heuristic heuristic)
     {
         Debug.Log("Begin AlphaBeta");
-        SearchNode alphaBetaRoot = AlphaBetaSearch(player, board, 4, int.MinValue, int.MaxValue);
+        SearchNode alphaBetaRoot;
+        if (heuristic == Heuristic.Score)
+        {
+             alphaBetaRoot = AlphaBetaSearch(player, board, 4, int.MinValue, int.MaxValue, GetWeightedScoreDifference);
+        }
+        else
+        {
+            alphaBetaRoot = AlphaBetaSearch(player, board, 4, int.MinValue, int.MaxValue, GetMobilityDifference);
+        }
         return alphaBetaRoot.bestMove;
     }
 
-    private SearchNode AlphaBetaSearch(DiscColour player, IBoardModel board, uint depth, int alpha, int beta)
+    private SearchNode AlphaBetaSearch(DiscColour player, IBoardModel board, uint depth, int alpha, int beta, Func<IBoardModel, int> heuristic)
     {
         SearchNode node = new SearchNode();
         numOfNodes++;
 
         node.board = board;
-        node.boardValue = GetWeightedScoreDifference(board);
+        node.boardValue = heuristic(board);
 
         node.alpha = alpha;
         node.beta = beta;
@@ -143,7 +186,7 @@ public class MakeAIMoveCommand : Command
         foreach (GridPosition legalMove in availableMoves)
         {
             IBoardModel moveBoard = makePlay(copy(board), legalMove, player);
-            SearchNode nextMove = AlphaBetaSearch(GetOpponent(player), moveBoard, depth - 1, node.alpha, node.beta);
+            SearchNode nextMove = AlphaBetaSearch(GetOpponent(player), moveBoard, depth - 1, node.alpha, node.beta, heuristic);
             if (player == turnToPlay)
             {
                 if (nextMove.boardValue > node.boardValue)
@@ -178,6 +221,11 @@ public class MakeAIMoveCommand : Command
     private GridPosition BeginIterativeDeepeningSearch(DiscColour player, IBoardModel board)
     {
 
+    }
+
+    private SearchNode IterativeDFS(DiscColour player, IBoardModel model)
+    {
+        SearchNode root;
     }*/
 
     private class SearchNode
@@ -265,6 +313,22 @@ public class MakeAIMoveCommand : Command
         if(player == DiscColour.Black) { return DiscColour.White; }
 
         return DiscColour.Black;
+    }
+
+    private bool IsWinningBoard(IBoardModel board)
+    {
+        uint numOfDiscs = 0;
+        for (int i = 0; i < board.BoardSize; i++)
+        {
+            for (int j = 0; j < board.BoardSize; j++)
+            {
+                IBoardSquareModel boardSquare = board.Board[i, j];
+                if (!boardSquare.ContainsDisc()) { return false; }
+
+                if (boardSquare.Disc.Colour == turnToPlay) { numOfDiscs++; }
+            }
+        }
+        return numOfDiscs > (board.BoardSize * board.BoardSize / 2.0f);
     }
 
     private IBoardModel copy(IBoardModel original)

@@ -7,9 +7,12 @@ public class StartTurnCommand : Command
     [Inject]
     public DiscColour turnToPlay { get; set; }
 
+    [Inject]
+    public ContinueGameSignal continueSignal { get; set; }
+
     public override void Execute()
     {
-        //Debug.Log("Start Turn");
+        Debug.Log("Start Turn");
    		IGameManager gameManager = injectionBinder.GetInstance<IGameManager> () as IGameManager;
 
         if (gameManager.GetGameBoard().GetLegalMoves(turnToPlay).Count > 0)
@@ -35,9 +38,12 @@ public class StartTurnCommand : Command
     {
         switch (method)
         {
-            case PlayMethod.UserInput: BeginUserInputTurn(); break;
-            case PlayMethod.MinimaxSearch: BeginMinimaxSearchTurn(); break;
-            case PlayMethod.AlphaBeta: BeginMinimaxSearchTurn(); break;
+            case PlayMethod.UserInput: 
+                BeginUserInputTurn(); 
+                break;
+            default: 
+                BeginMinimaxSearchTurn(); 
+                break;
         }
     }
 
@@ -50,8 +56,16 @@ public class StartTurnCommand : Command
 
     private void BeginMinimaxSearchTurn()
     {
+        Retain();
+        continueSignal.AddListener(MakeAIMove);
+    }
+
+    private void MakeAIMove()
+    {
         MakeAIMoveSignal signal = injectionBinder.GetInstance<MakeAIMoveSignal>() as MakeAIMoveSignal;
         signal.Dispatch(turnToPlay);
+        continueSignal.RemoveListener(MakeAIMove);
+        Release();
     }
 
     private void SkipCurrentTurn(IGameManager gameManager)
@@ -59,7 +73,9 @@ public class StartTurnCommand : Command
         if (gameManager.SkippedLastTurn)
         {
             //End of Game
-            //TODO Handle case
+            Debug.Log("End");
+            GameOverSignal overSignal = injectionBinder.GetInstance<GameOverSignal>() as GameOverSignal;
+            overSignal.Dispatch();
         }
         else
         {

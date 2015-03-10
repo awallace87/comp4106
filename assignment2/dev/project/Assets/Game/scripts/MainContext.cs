@@ -35,7 +35,8 @@ public class MainContext : SignalContext
     void mapInjectionBindings()
     {
 		injectionBinder.Bind<IPlayer> ().To<HumanPlayer> ().ToName (PlayerType.Human);
-		injectionBinder.Bind<IPlayer> ().To<AIPlayer> ().ToName (PlayerType.Computer);
+		injectionBinder.Bind<IPlayer> ().To<ComputerScorePlayer> ().ToName (PlayerType.ComputerScore);
+        injectionBinder.Bind<IPlayer>().To<ComputerMobilityPlayer>().ToName(PlayerType.ComputerMobility);
 
 		injectionBinder.Bind<IBoardModel> ().To<DefaultBoardModel> ();
 		injectionBinder.Bind<IDiscModel> ().To<DefaultDiscModel> ();
@@ -60,6 +61,11 @@ public class MainContext : SignalContext
 			.To<CreateDiscCommand> ()
 			.To<CreateDiscViewCommand> ()
 			.InSequence ();
+
+        commandBinder.Bind<ContinueGameSignal>().To<StartFirstTurnCommand>().Once();
+        commandBinder.Bind<ContinueGameSignal>();
+
+        commandBinder.Bind<GameOverSignal>().To<GameOverCommand>();
 
         commandBinder.Bind<StartTurnSignal>().To<StartTurnCommand>();
         commandBinder.Bind<BoardSquarePressedSignal>().To<BoardSquareInputCommand>();
@@ -110,6 +116,13 @@ public class MainContext : SignalContext
     public void PauseGame()
     {
 
+    }
+
+    public void BeginGame()
+    {
+        Debug.Log("2");
+        ContinueGameSignal firstTurnSignal = injectionBinder.GetInstance<ContinueGameSignal>() as ContinueGameSignal;
+        firstTurnSignal.Dispatch();
     }
 
     public void EndGame() 

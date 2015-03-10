@@ -8,6 +8,7 @@ public class Root : ContextView
 {
     public static readonly Queue<Action> RootMainThreadActions = new Queue<Action>();
 
+    public bool gameStarted = false;
     void Awake()
     {
         context = new MainContext(this);
@@ -26,7 +27,16 @@ public class Root : ContextView
         {
             RootMainThreadActions.Dequeue().Invoke();
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Debug.Log("1");
+            MainContext mainContext = context as MainContext;
+            mainContext.BeginGame();
+        }
+
     }
+
     
 
 }
