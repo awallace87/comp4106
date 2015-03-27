@@ -38,7 +38,8 @@ BayesClass <- R6Class("BayesClass",
                               numDimensions <- ncol(testingSet) - 1
                               numMatches <- 0
                               numTests <- nrow(testingSet)
-                              predictionVec <- rep(0,numTests)
+                              confusionMat <- matrix(0, nrow = nrow(private$classProbs), ncol = nrow(private$classProbs))
+                              
                               for(i in c(1:numTests)) {
                                 classVec <- rep(1, nrow(private$classProbs))
                                 for(j in c(1:numDimensions) ) {
@@ -51,14 +52,12 @@ BayesClass <- R6Class("BayesClass",
                                     }
                                   }
                                 }
-                                predictionVec[i] <- which.max(classVec)
+                                predClass <- which.max(classVec)
+                                confusionMat[predClass, testingSet$class[i]] <- confusionMat[predClass, testingSet$class[i]] + 1
                               }
-                              for(i in c(1:length(predictionVec))) {
-                                #print(cat("PredVal - " , predictionVec[i] , ", TestVal - " , testingSet$class[i]))
-                                if(predictionVec[i] == testingSet$class[i]) {
-                                  numMatches <- numMatches + 1
-                                  #print("Match")
-                                }
+                              numMatches <- 0
+                              for(i in c(1:ncol(confusionMat))) {
+                                numMatches <- numMatches + confusionMat[i,i]
                               }
                               #print(cat("Error - " , 1 - numMatches/numTests))
                               return(1 - numMatches/numTests)
