@@ -76,8 +76,36 @@ ClassDef <- R6Class("ClassDef",
                       )
                     )
 
+createConditionalProbabilities <- function(numClasses, numDimensions) {
+  classList <- c(1:numClasses)
+  conditional <- setNames(data.frame(matrix(ncol = numDimensions + 1, nrow = numClasses)), union("class", paste("x", c(1:numDimensions))))
+  conditional$class <- c(1:numClasses)
+  for(i in c(1:nrow(conditional))) {
+    for(j in c(2:ncol(conditional))) {
+      conditional[i,j] <- j - 1
+    }
+  }
+  
+  for(h in c(1:numClasses)) {
+    rootIndex <- sample(1:numDimensions, 1)
+    for(i in c(2:ncol(conditional))) {
+      if(i != rootIndex) {
+        foundConditional <- FALSE
+        condIndex <- i
+        while(!foundConditional) {
+          condIndex <- sample(1:numDimensions, 1)
+          if(condIndex != conditional[h,i] & conditional[h, condIndex] != i) {
+            foundConditional <- TRUE
+          }
+        }
+        conditional[h, i] <- condIndex
+      }
+    }
+  }
+  return(conditional)
+}
 
-constructRandomClasses <- function(numOfClasses, numOfDimensions) {
+constructRandomClasses <- function(numOfClasses, numOfDimensions, dependencies = FALSE) {
   startingMat <- matrix(runif(numOfClasses*(numOfDimensions), min = 0, max = 1), nrow = numOfClasses, ncol = numOfDimensions)
   return(startingMat)
 }
@@ -108,6 +136,8 @@ createDependenceTree <- function() {
 }
 
 
+
+
   
 
 classes <- 4
@@ -119,4 +149,5 @@ b <- constructSamples(a, 2000)
 bayesClass <- BayesClass$new()
 dataCols <- dimensions + 1
 
-c <- bayesClass$trainAndTest(b, FALSE, 4)
+#c <- bayesClass$trainAndTest(b, FALSE, 4)
+d <- createConditionalProbabilities(4, 10)
