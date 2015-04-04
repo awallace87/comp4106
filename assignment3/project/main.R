@@ -29,7 +29,8 @@ BayesClass <- R6Class("BayesClass",
                             classApriori = NA,
                             train = function(trainingSet, dependency = FALSE) {
                               numOfDimensions = ncol(trainingSet) - 1
-                              private$classProbs <- aggregate(trainingSet[,c(2:ncol(trainingSet))], by = list(class = trainingSet$class), FUN = mean)                              
+                              class.index <- grep("class", colnames(trainingSet))
+                              private$classProbs <- aggregate(trainingSet[,-class.index], by = list(class = trainingSet$class), FUN = mean)                              
                               return(private$classProbs)                                                            
                             },
                             test = function(testingSet) {
@@ -131,8 +132,18 @@ constructSamples <- function(classDefinitions, samplesPerClass) {
   return(sampleDF)
 }
 
-createDependenceTree <- function() {
-  
+formatData <- function(original.data, column.means) {
+  class.index <- grep("class", colnames(original.data))
+  for(i in 1:length(column.means)) {
+    col.num <- i
+    if(i >= class.index) {
+      col.num <- i+1
+    }
+    for(j in 1:nrow(original.data)) {
+      original.data[j,col.num] <- (original.data[j,col.num] > column.means[col.num])
+    }
+  }
+  return(original.data)
 }
 
 
@@ -143,11 +154,37 @@ createDependenceTree <- function() {
 classes <- 4
 dimensions <- 10
 
-a <- constructRandomClasses(classes, dimensions)
-b <- constructSamples(a, 2000)
+num.runs <- 10
+sum.error <- 1
+# for(i in 1:num.runs) {
+#   a <- constructRandomClasses(classes, dimensions)
+#   b <- constructSamples(a, 2000)
+#   
+#   bayesClass <- BayesClass$new()
+#   
+#   artificial <- bayesClass$trainAndTest(b, FALSE, 8)
+#   sum.error <- artificial + sum.error
+# }
+# 
+# average.error <- sum.error / num.runs
 
-bayesClass <- BayesClass$new()
-dataCols <- dimensions + 1
+# iris.data <- read.csv("iris.csv")
+# iris.num.columns <- ncol(iris.data)
+# colnames(iris.data)[iris.num.columns] <- "class"
+# iris.column.means <- colMeans(iris.data[,-iris.num.columns])
+# iris.formatted <- formatData(iris.data, iris.column.means)
+# iris.acc <- bayesClass$trainAndTest(iris.formatted, FALSE, 4)
 
-#c <- bayesClass$trainAndTest(b, FALSE, 4)
-d <- createConditionalProbabilities(4, 10)
+heart.disease.data <- read.csv("heartDisease.csv")
+colnames(heart.disease.data)[ncol(heart.disease.data)] <- "class"
+heart.disease.column.means <- colMeans(heart.disease.data[,-ncol(heart.disease.data)])
+heart.disease.formatted <- formatData(heart.disease.data, heart.disease.column.means)
+heart.disease.acc <- bayesClass$trainAndTest(heart.disease.formatted, FALSE, 4)
+
+# wine.data <- read.csv("wine.csv")
+# colnames(wine.data)[1] <- "class"
+# wine.data <- data.frame(wine.data[,2:ncol(wine.data)], class=wine.data$class)
+# wine.column.means <- colMeans(wine.data[,-ncol(wine.data)])
+# wine.formatted <- formatData(wine.data, wine.column.means)
+# wine.acc <- bayesClass$trainAndTest(wine.formatted, FALSE, 4)
+#d <- createConditionalProbabilities(4, 10)
