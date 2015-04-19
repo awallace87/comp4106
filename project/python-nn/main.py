@@ -34,3 +34,11 @@ while epoch_num < PLAYOFF_EPOCH:
 
 
 #NEW PREDICTIONS TO MODEL
+VALID_SEASON_YEARS = ["2015","2014","2013","2011"]
+hockeyref_filename = "HockeyReference_skater_{0}_season"
+
+#gather dataframes
+master_data_frame_collection = []
+
+for year in VALID_SEASON_YEARS:
+    print(hockey_ref_filename.format(year))
