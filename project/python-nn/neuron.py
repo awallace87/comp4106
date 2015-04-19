@@ -3,7 +3,7 @@ import numpy as np
 import math
 from enum import Enum
 
-MOMENTUM_CONSTANT = 0.1
+MOMENTUM_CONSTANT = 0.05
 #using a larger learning rate to compensate for the small training set
 LEARNING_RATE = 0.7
 
@@ -57,7 +57,7 @@ class Neuron(object):
         self.bias_delta = 0
 
     def init_weights(self):
-        self.weights = [random.uniform(0.0, 1.0) for i in range(self.n_inputs)]
+        self.weights = [random.uniform(-0.5, 0.5) for i in range(self.n_inputs)]
 
     def forward(self, inputs):
         self.previous_inputs = inputs
@@ -142,7 +142,13 @@ class NeuralNetwork(object):
         for i in range(self.n_hidden_layers):
             hidden_layer = self.hidden_layers[i]
             outputs = hidden_layer.forward(inputs)
-        final_output = softmax(self.output_layer.forward(outputs))
+        final_output = self.output_layer.forward(outputs)
+
+        if(len(final_output) == 1):
+            final_output = [hypertan(final_output[0])]
+        else:
+            final_output = softmax(final_output)
+
         for i in range(len(self.output_layer.nodes)):
             self.output_layer.nodes[i].output = final_output[i]
         return final_output
@@ -152,6 +158,7 @@ class NeuralNetwork(object):
             output_node = self.output_layer.nodes[i]
             derivative = (1 - output_node.output) * output_node.output
             output_node.gradient = derivative * (target_values[i] - output_node.output)
+            #print("Update Gradient: {0}, Derivative = {1}, Output = {2}".format(target_values[i], derivative, output_node.output))
 
     def update_hidden_gradients(self):
         previous_layer = self.output_layer
