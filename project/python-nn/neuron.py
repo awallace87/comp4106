@@ -52,8 +52,9 @@ class Neuron(object):
         self.inputs = [0.0 for i in range(self.n_inputs)]
         self.output = 0
         self.gradient = 0
-
+        self.bias = 0
         self.deltas = [0.0 for i in range(self.n_inputs)]
+        self.bias_delta = 0
 
     def init_weights(self):
         self.weights = [random.uniform(0.0, 1.0) for i in range(self.n_inputs)]
@@ -66,9 +67,9 @@ class Neuron(object):
         for elem in inputs_with_weights:
             output_sum += elem
         if(self.neuron_type == NeuronType.Hidden):
-            output_val = hypertan(output_sum)
+            output_val = hypertan(output_sum + self.bias)
         else:
-            output_val = output_sum
+            output_val = output_sum + self.bias
         self.output = output_val
         return self.output
 
@@ -78,6 +79,11 @@ class Neuron(object):
             momentum = self.deltas[i] * MOMENTUM_CONSTANT
             self.weights[i] += (delta + momentum)
             self.deltas[i] = delta
+
+    def update_bias(self):
+        delta = LEARNING_RATE * self.gradient
+        self.bias += delta + (self.bias_delta * MOMENTUM_CONSTANT)
+        self.bias_delta = delta
 
     def print_neuron(self):
         print("Neuron Info: Gradient: ", self.gradient, "\nWeights - ")
@@ -107,6 +113,10 @@ class NeuronLayer(object):
     def update_weights(self):
         for node in self.nodes:
             node.update_weights()
+
+    def update_biases(self):
+        for node in self.nodes:
+            node.update_bias()
 
     def print_layer(self):
         print("Layer - ", self.layer_type)
@@ -160,18 +170,27 @@ class NeuralNetwork(object):
             layer.update_weights()
         self.output_layer.update_weights()
 
+    def update_biases(self):
+        for layer in self.hidden_layers:
+            layer.update_biases()
+        self.output_layer.update_biases()
+
     def backward(self, target):
         self.update_output_gradients(target)
         self.update_hidden_gradients()
         self.update_weights()
+        self.update_biases()
 
     def train(self, inputs, target):
         predicted_val = self.forward(inputs)
-        for i in range(len(predicted_val)):
-            print("Class ", i)
-            print("Predict - ", predicted_val[i])
-            print("Actual Value - ", target[i])
+        #for i in range(len(predicted_val)):
+        #    print("Class ", i)
+        #    print("Predict - ", predicted_val[i])
+        #    print("Actual Value - ", target[i])
         self.backward(target)
+
+    def test(self, input):
+        return(self.forward(input))
 
     def print_network(self):
         for layer in self.hidden_layers:
