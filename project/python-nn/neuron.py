@@ -3,9 +3,9 @@ import numpy as np
 import math
 from enum import Enum
 
-MOMENTUM_CONSTANT = 0.05
+MOMENTUM_CONSTANT = 0.1
 #using a larger learning rate to compensate for the small training set
-LEARNING_RATE = 0.7
+LEARNING_RATE = 2.0
 
 def derivative_of(activation_func, input_val):
     if activation_func == ActivationFunction.soft_max:
@@ -13,6 +13,8 @@ def derivative_of(activation_func, input_val):
     else: #Default is HyperTan
         return( (1 - input_val) * (1 + input_val) )
 
+#Both hypertan and softmax functions taken from Visual Studio Magazine
+#URL-http://visualstudiomagazine.com/articles/2014/12/01/back-propagation-using-python.aspx
 def hypertan(x):
     if x < -20.0:
         return -1.0

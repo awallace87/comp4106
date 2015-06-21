@@ -12,18 +12,15 @@ class PlayoffPosition(Enum):
     Quarter = 4
 
 #Playoff Prediction
-PLAYOFF_EPOCH = 5
+PLAYOFF_EPOCH = 8
 def make_playoff_position_preds():
     playoff_df = pd.read_csv('playoffs.csv')
     playoff_norm_df = (playoff_df - playoff_df.mean()) / (playoff_df.max() - playoff_df.min())
 
     num_inputs = len(playoff_norm_df.columns) - 5
-    playoff_class = neuron.NeuralNetwork(num_inputs, 1, 5)
+    playoff_class = neuron.NeuralNetwork(num_inputs, 3, 5)
 
-    print(playoff_norm_df.columns[:5])
     playoff_norm_df.iloc[:,:5] = playoff_df.iloc[:,:5]
-    print(playoff_norm_df.iloc[:, 5:])
-
 
     #Add in multiple epoch training
     epoch_num = 0
@@ -44,7 +41,6 @@ def make_playoff_position_preds():
             row = playoff_norm_df.iloc[j]
             results = playoff_class.test(row[5:])
             actual = list(row[:5])
-            #print(results)
             if(results.index(max(results)) == actual.index(max(actual))):
                 total_success += 1
                 #print("Success")
@@ -59,23 +55,30 @@ def make_playoff_position_preds():
     current_season_df = pd.read_csv("currentseason.csv")
     norm_cols = list(current_season_df.columns[1:])
 
-    print("Current Season Cols - {0}".format(len(current_season_df.columns[1:])))
-    print("Regular Cols - {0}".format(len(playoff_norm_df.columns[5:])))
+    #print("Current Season Cols - {0}".format(len(current_season_df.columns[1:])))
+    #print("Regular Cols - {0}".format(len(playoff_norm_df.columns[5:])))
 
 
     for col in norm_cols:
         current_season_df[col] = (current_season_df[col] - current_season_df[col].mean()) / (current_season_df[col].max() - current_season_df[col].min())
 
+    #Only TOI 3v3 has a NaN entry, and in other tables it is consistently -0.015625
     current_season_df = current_season_df.fillna(-0.015625)
 
-    print(current_season_df)
+    #print(current_season_df)
+
+    #TODO Create Table of Playoff Percentages
+
 
     for index, row in current_season_df.iterrows():
         result = playoff_class.test(row[1:])
-        enum_pos = PlayoffPosition(result.index(max(result)))
-        print(row[0] + " - Predicted Playoff Position = {0}, with prob - {1}".format(enum_pos, max(result)))
+        print("Team - {0}".format(row[0]))
+        for i in range(len(result)):
+            print("Round - {0}, Prob - {1}".format(PlayoffPosition(i), result[i]))
+        #enum_pos = PlayoffPosition(result.index(max(result)))
+        #print(row[0] + " - Predicted Playoff Position = {0}, with prob - {1}".format(enum_pos, max(result)))
 
-PLAYER_FANTASY_EPOCH = 2
+PLAYER_FANTASY_EPOCH = 1
 
 def make_fantasy_player_preds():
 
@@ -98,14 +101,14 @@ def make_fantasy_player_preds():
     player_epoch_num = 0
     index_sequence = range(len(player_norm_df))
 
-    fantasy_class = neuron.NeuralNetwork(num_train_inputs, 1, 1)
-
-    print(norm_fantasy_cols)
+    fantasy_class = neuron.NeuralNetwork(num_train_inputs, 5, 1)
 
     index_len = len(index_sequence)
     split_ind = int(index_len * 0.8)
     total_tests = 0.0
-    total_success = 0.0
+    total_success = 0
+    b_success = 0
+    c_success = 0
 
     while player_epoch_num < PLAYER_FANTASY_EPOCH:
         random.shuffle(index_sequence)
@@ -129,15 +132,20 @@ def make_fantasy_player_preds():
                 first_entry = next_year_df.iloc[0]
                 result_fantasy = fantasy_class.test(row[6:])
                 diff_fantasy = float(result_fantasy[0]) - float(first_entry["Fantasy"])
-                print("Fantasy Test, Expected Val = {0}, Result = {1}".format(float(first_entry["Fantasy"]), result_fantasy))
-                if(diff_fantasy < 0.1 and diff_fantasy > -0.1):
-                    #print("Success")
+                #print("Fantasy Test, Expected Val = {0}, Result = {1}".format(float(first_entry["Fantasy"]), result_fantasy))
+                if(diff_fantasy < 0.025 and diff_fantasy > -0.025):
                     total_success += 1
+                if(diff_fantasy < 0.05 and diff_fantasy > -0.05):
+                    b_success += 1
+                if(diff_fantasy < 0.1 and diff_fantasy > -0.1):
+                    c_success += 1
         print("Epoch Complete")
         player_epoch_num += 1
 
-    print("Fantasy Predictions Success Rate = {0}".format(total_success / total_tests))
-    #fantasy_class.print_network()
+    print("A Predictions Success Rate = {0}".format(total_success / total_tests))
+    print("B Predictions Success Rate = {0}".format(b_success / total_tests))
+    print("C Predictions Success Rate = {0}".format(c_success / total_tests))
+
 
 
 if __name__ == "__main__":

@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../follow-through/dev/project/Assets/Scripts/Model/IEnemyManager.cs">
+    <Files>
+      <File FileName="../../../../follow-through/dev/project/Assets/Scripts/Model/IEnemyManager.cs" Line="6" Column="2" />
+      <File FileName="../../../../follow-through/dev/project/Assets/Scripts/Model/IBlockManager.cs" Line="1" Column="1" />
+      <File FileName="../../../../follow-through/dev/project/Assets/Scripts/Model/IBlockObjectModel.cs" Line="1" Column="1" />
+      <File FileName="../../../../follow-through/dev/project/Assets/Scripts/Model/IBowModel.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,4 +1,4 @@
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
+Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EVG,PPG,SHG,GWG,EVA,PPA,SHA,S,S%,TOI,ATOI
 1,Justin Abdelkader,23,DET,LW,74,7,12,19,15,61,7,0,0,1,11,0,1,129,5.4,910,12:18
 2,Luke Adam,20,BUF,LW,19,3,1,4,-6,12,3,0,0,1,0,1,0,31,9.7,213,11:13
 3,Craig Adams,33,PIT,RW,80,4,11,15,-5,76,2,0,2,1,9,0,2,90,4.4,975,12:11
@@ -19,8 +19,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 18,Keith Aulie,21,TOR,D,40,2,0,2,-1,32,2,0,0,0,0,0,0,32,6.3,765,19:08
 19,Sean Avery,30,NYR,C,76,3,21,24,-4,174,3,0,0,1,20,1,0,137,2.2,854,11:14
 20,Anton Babchuk,26,TOT,D,82,11,24,35,14,32,4,6,1,2,16,7,1,132,8.3,1340,16:21
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 21,David Backes,26,STL,RW,82,31,31,62,32,93,26,5,0,2,20,10,1,211,14.7,1616,19:42
 22,Mikael Backlund,21,CGY,C,73,10,15,25,4,18,8,2,0,1,12,2,1,144,6.9,882,12:05
 23,Nicklas Backstrom,23,WSH,C,77,18,47,65,24,40,13,4,1,2,29,18,0,202,8.9,1586,20:36
@@ -41,8 +39,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 38,Shawn Belle,26,TOT,D,9,0,0,0,-1,2,0,0,0,0,0,0,0,8,0.0,154,17:09
 39,Jamie Benn,21,DAL,LW,69,22,34,56,-5,52,12,6,4,3,27,5,2,177,12.4,1243,18:01
 40,Andre Benoit,27,OTT,D,8,0,1,1,-1,6,0,0,0,0,0,1,0,17,0.0,135,16:50
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 41,Sean Bergenheim,26,TBL,LW,80,14,15,29,0,56,12,2,0,1,13,2,0,182,7.7,1118,13:59
 42,Marc-Andre Bergeron,30,TBL,D,23,2,6,8,-10,8,2,0,0,1,3,3,0,37,5.4,329,14:19
 43,Patrice Bergeron,25,BOS,C,80,22,35,57,20,26,17,3,2,4,26,8,1,211,10.4,1431,17:53
@@ -63,8 +59,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 58,Zach Bogosian,20,ATL,D,71,5,12,17,-27,29,5,0,0,1,8,4,0,155,3.2,1591,22:24
 59,Alexandre Bolduc,25,VAN,C,24,2,2,4,1,21,2,0,0,1,2,0,0,21,9.5,178,7:26
 60,Jared Boll,24,CBJ,RW,73,7,5,12,-2,182,7,0,0,2,5,0,0,66,10.6,560,7:40
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 61,Dave Bolland,24,CHI,C,61,15,22,37,11,34,11,4,0,1,14,8,0,102,14.7,1076,17:39
 62,Nick Bonino,22,ANA,C,26,0,0,0,-3,4,0,0,0,0,0,0,0,23,0.0,255,9:48
 63,Derek Boogaard,28,NYR,LW,22,1,1,2,0,45,1,0,0,0,1,0,0,4,25.0,100,4:33
@@ -85,8 +79,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 78,Dan Boyle,34,SJS,D,76,9,41,50,2,67,5,4,0,2,18,23,0,199,4.5,1994,26:14
 79,Nick Boynton,32,TOT,D,51,1,7,8,-1,40,1,0,0,0,7,0,0,43,2.3,747,14:39
 80,Tyler Bozak,24,TOR,C,82,15,17,32,-29,14,8,6,1,4,12,5,0,120,12.5,1581,19:17
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 81,Matt Bradley,32,WSH,RW,61,4,7,11,-3,68,4,0,0,0,7,0,0,58,6.9,640,10:29
 82,Derick Brassard,23,CBJ,C,74,17,30,47,-11,55,11,6,0,3,20,10,0,183,9.3,1260,17:02
 83,Justin Braun,23,SJS,D,28,2,9,11,-1,2,0,2,0,0,9,0,0,44,4.5,462,16:30
@@ -107,8 +99,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 98,Brent Burns,25,MIN,D,80,17,29,46,-10,98,9,8,0,3,22,6,1,170,10.0,2004,25:03
 99,Alexandre Burrows,29,VAN,LW,72,26,22,48,26,77,24,1,1,4,21,0,1,152,17.1,1226,17:02
 100,Bobby Butler,23,OTT,LW,36,10,11,21,-16,10,9,1,0,3,7,4,0,73,13.7,555,15:26
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 101,Chris Butler,24,BUF,D,49,2,7,9,8,26,2,0,0,0,6,1,0,52,3.8,890,18:10
 102,Dustin Byfuglien,25,ATL,D,81,20,33,53,-2,93,12,8,0,6,17,16,0,347,5.8,1888,23:18
 103,Paul Byron,21,BUF,C,8,1,1,2,0,2,1,0,0,0,1,0,0,5,20.0,88,10:57
@@ -129,8 +119,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 118,Brett Carson,25,TOT,D,19,0,0,0,9,4,0,0,0,0,0,0,0,12,0.0,217,11:27
 119,Jeff Carter,26,PHI,C,80,36,30,66,27,39,28,8,0,7,21,9,0,335,10.7,1460,18:15
 120,Ryan Carter,27,TOT,C,62,3,6,9,-1,66,3,0,0,0,5,0,1,63,4.8,621,10:01
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 121,Zdeno Chara,33,BOS,D,81,14,30,44,33,88,5,8,1,2,22,7,1,264,5.3,2060,25:26
 122,Jason Chimera,31,WSH,LW,81,10,16,26,-10,64,8,2,0,1,15,1,0,162,6.2,1074,13:15
 123,Kyle Chipchura,24,ANA,C,40,0,2,2,1,32,0,0,0,0,2,0,0,23,0.0,320,7:00
@@ -151,8 +139,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 138,Joe Colborne,21,TOR,C,1,0,1,1,1,0,0,0,0,0,1,0,0,1,0.0,19,18:41
 139,Erik Cole,32,CAR,LW,82,26,26,52,-1,49,22,3,1,9,20,5,1,201,12.9,1514,18:27
 140,Ian Cole,21,STL,D,26,1,3,4,6,35,1,0,0,0,3,0,0,22,4.5,458,17:36
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 141,Sean Collins,27,WSH,D,4,1,0,1,2,0,1,0,0,1,0,0,0,4,25.0,59,14:45
 142,Jeremy Colliton,26,NYI,C,15,2,1,3,-7,10,0,2,0,0,1,0,0,7,28.6,178,11:53
 143,Blake Comeau,24,NYI,RW,77,24,22,46,-17,43,18,5,1,3,15,7,0,182,13.2,1439,18:41
@@ -173,8 +159,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 158,B.J. Crombeen,25,STL,RW,80,7,7,14,-18,154,6,0,1,0,7,0,0,113,6.2,1024,12:48
 159,Sidney Crosby,23,PIT,C,41,32,34,66,20,31,21,10,1,3,25,9,0,161,19.9,899,21:55
 160,Matt Cullen,34,MIN,C,78,12,27,39,-14,34,3,5,4,2,11,16,0,150,8.0,1406,18:02
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 161,Jassen Cullimore,38,CHI,D,36,0,8,8,4,8,0,0,0,0,8,0,0,22,0.0,455,12:38
 162,Kyle Cumiskey,24,COL,D,18,1,7,8,-3,10,1,0,0,0,6,1,0,21,4.8,354,19:40
 163,Matt D'Agostini,24,STL,RW,82,21,25,46,8,40,15,6,0,5,17,8,0,163,12.9,1210,14:46
@@ -195,8 +179,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 178,Shane Doan,34,PHX,RW,72,20,40,60,5,67,9,11,0,6,30,10,0,221,9.0,1389,19:17
 179,Jamie Doornbosch,20,NYI,D,1,0,0,0,-1,0,0,0,0,0,0,0,0,1,0.0,5,5:21
 180,Derek Dorsett,24,CBJ,RW,76,4,13,17,-15,184,4,0,0,0,10,0,3,112,3.6,1004,13:13
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 181,Drew Doughty,21,LAK,D,76,11,29,40,13,68,6,5,0,3,19,10,0,139,7.9,1949,25:39
 182,Jake Dowell,25,CHI,C,79,6,15,21,5,63,6,0,0,0,12,0,3,74,8.1,933,11:49
 183,Steve Downie,23,TBL,RW,57,10,22,32,8,171,8,2,0,1,19,3,0,83,12.0,828,14:31
@@ -217,8 +199,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 198,Robbie Earl,25,MIN,LW,6,0,0,0,-3,0,0,0,0,0,0,0,0,6,0.0,53,8:46
 199,Mark Eaton,33,NYI,D,34,0,3,3,-2,8,0,0,0,0,3,0,0,29,0.0,692,20:22
 200,Patrick Eaves,26,DET,RW,63,13,7,20,-2,14,10,2,1,1,7,0,0,108,12.0,800,12:42
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 201,Andrew Ebbett,28,PHX,C,33,2,3,5,-1,4,1,0,1,1,3,0,0,23,8.7,331,10:01
 202,Jordan Eberle,20,EDM,C,69,18,25,43,-12,22,12,4,2,5,18,7,0,158,11.4,1220,17:41
 203,Tyler Eckford,25,NJD,D,4,0,0,0,-1,0,0,0,0,0,0,0,0,1,0.0,35,8:43
@@ -239,8 +219,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 218,Jonathan Ericsson,26,DET,D,74,3,12,15,8,87,2,1,0,0,12,0,0,89,3.4,1394,18:50
 219,Loui Eriksson,25,DAL,LW,79,27,46,73,10,8,16,10,1,6,29,15,2,179,15.1,1625,20:34
 220,John Erskine,30,WSH,D,73,4,7,11,1,94,4,0,0,1,7,0,0,58,6.9,1083,14:50
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 221,Brian Fahey,29,WSH,D,7,0,1,1,-1,2,0,0,0,0,1,0,0,4,0.0,83,11:49
 222,Justin Falk,22,MIN,D,22,0,3,3,-4,6,0,0,0,0,3,0,0,7,0.0,311,14:09
 223,Mark Fayne,23,NJD,D,57,4,10,14,10,27,4,0,0,0,6,4,0,77,5.2,1017,17:50
@@ -261,8 +239,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 238,Kurtis Foster,29,EDM,D,74,8,14,22,-12,45,3,5,0,0,5,9,0,182,4.4,1307,17:40
 239,Cam Fowler,19,ANA,D,76,10,30,40,-25,20,4,6,0,3,13,17,0,123,8.1,1682,22:08
 240,Cody Franson,23,NSH,D,80,8,21,29,10,30,6,2,0,2,17,4,0,156,5.1,1214,15:11
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 241,Johan Franzen,31,DET,C,76,28,27,55,5,58,18,10,0,5,20,7,0,248,11.3,1325,17:26
 242,Colin Fraser,26,EDM,C,67,3,2,5,-2,60,2,0,1,0,2,0,0,57,5.3,688,10:17
 243,Mark Fraser,24,NJD,D,26,0,2,2,2,29,0,0,0,0,2,0,0,16,0.0,363,13:59
@@ -283,8 +259,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 258,Ryan Getzlaf,25,ANA,C,67,19,57,76,14,35,12,7,0,4,37,20,0,117,16.2,1464,21:51
 259,Tom Gilbert,28,EDM,D,79,6,20,26,-14,32,3,3,0,0,11,7,2,106,5.7,1936,24:30
 260,Hal Gill,35,MTL,D,75,2,7,9,-9,43,2,0,0,1,6,0,1,62,3.2,1486,19:49
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 261,Colton Gillies,21,MIN,C,7,1,0,1,-2,2,1,0,0,0,0,0,0,3,33.3,73,10:22
 262,Trevor Gillies,32,NYI,LW,39,2,0,2,-3,165,2,0,0,0,0,0,0,9,22.2,120,3:04
 263,Matt Gilroy,26,NYR,D,58,3,8,11,5,14,3,0,0,1,7,1,0,75,4.0,822,14:11
@@ -305,8 +279,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 278,Andrew Gordon,25,WSH,RW,9,1,1,2,-2,0,1,0,0,0,1,0,0,5,20.0,78,8:40
 279,Boyd Gordon,27,WSH,RW,60,3,6,9,-5,16,2,0,1,1,6,0,0,77,3.9,783,13:03
 280,Josh Gorges,26,MTL,D,36,1,6,7,-3,18,0,1,0,1,6,0,0,20,5.0,762,21:10
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 281,Michael Grabner,23,NYI,RW,76,34,18,52,13,10,26,2,6,3,15,2,1,228,14.9,1146,15:05
 282,Mikhail Grabovski,27,TOR,C,81,29,29,58,14,60,19,10,0,4,24,5,0,239,12.1,1568,19:22
 283,Evgeny Grachev,20,NYR,C,8,0,0,0,-3,0,0,0,0,0,0,0,0,3,0.0,62,7:42
@@ -327,8 +299,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 298,Micheal Haley,24,NYI,C,27,2,1,3,-4,85,2,0,0,0,1,0,0,13,15.4,217,8:02
 299,Matt Halischuk,22,NSH,RW,27,4,8,12,5,2,4,0,0,1,8,0,0,29,13.8,273,10:08
 300,Adam Hall,30,TBL,RW,82,7,11,18,-12,32,7,0,0,1,11,0,0,167,4.2,1218,14:51
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 301,Taylor Hall,19,EDM,LW,65,22,20,42,-9,27,14,8,0,4,17,3,0,186,11.8,1184,18:13
 302,Jeff Halpern,34,MTL,C,72,11,15,26,6,29,10,0,1,3,15,0,0,62,17.7,917,12:44
 303,Dan Hamhuis,28,VAN,D,64,6,17,23,29,34,4,2,0,1,12,5,0,109,5.5,1451,22:41
@@ -349,8 +319,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 318,Dany Heatley,30,SJS,RW,80,26,38,64,8,56,14,11,1,5,18,19,1,217,12.0,1572,19:39
 319,Jochen Hecht,33,BUF,C,67,12,17,29,4,40,12,0,0,4,15,2,0,172,7.0,1144,17:05
 320,Victor Hedman,20,TBL,D,79,3,23,26,3,70,3,0,0,0,20,3,0,101,3.0,1660,21:01
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 321,Jan Hejda,32,CBJ,D,77,5,15,20,-6,28,5,0,0,0,14,0,1,79,6.3,1626,21:07
 322,Milan Hejduk,34,COL,RW,71,22,34,56,-23,18,12,10,0,2,20,14,0,170,12.9,1273,17:55
 323,Darren Helm,24,DET,C,82,12,20,32,9,16,10,0,2,2,19,0,1,177,6.8,1091,13:18
@@ -371,8 +339,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 338,Jonas Holos,23,COL,D,39,0,6,6,-3,10,0,0,0,0,4,1,1,36,0.0,704,18:03
 339,Korbinian Holzer,22,TOR,D,2,0,0,0,-1,2,0,0,0,0,0,0,0,1,0.0,26,13:01
 340,Shawn Horcoff,32,EDM,C,47,9,18,27,-1,46,4,5,0,1,12,5,1,78,11.5,878,18:41
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 341,Darcy Hordichuk,30,FLA,LW,64,1,4,5,-1,76,1,0,0,0,4,0,0,32,3.1,324,5:04
 342,Patric Hornqvist,24,NSH,RW,79,21,27,48,11,47,15,6,0,5,19,8,0,265,7.9,1242,15:44
 343,Nathan Horton,25,BOS,C,80,26,27,53,29,85,20,6,0,2,25,2,0,188,13.8,1303,16:17
@@ -393,8 +359,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 358,Dustin Jeffrey,22,PIT,C,25,7,5,12,5,4,6,1,0,1,5,0,0,39,17.9,324,12:58
 359,Hugh Jessiman,26,FLA,RW,2,0,0,0,-1,5,0,0,0,0,0,0,0,2,0.0,15,7:21
 360,Jesse Joensuu,23,NYI,RW,42,6,3,9,-6,33,6,0,0,2,3,0,0,41,14.6,486,11:35
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 361,Marcus Johansson,20,WSH,C,69,13,14,27,2,10,10,2,1,2,13,1,0,102,12.7,1016,14:43
 362,Erik Johnson,22,TOT,D,77,8,21,29,-13,56,4,3,1,2,13,7,1,161,5.0,1757,22:49
 363,Jack Johnson,24,LAK,D,82,5,37,42,-21,44,2,3,0,0,11,25,1,153,3.3,1902,23:12
@@ -415,8 +379,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 378,Patrick Kaleta,24,BUF,RW,51,4,5,9,-4,78,3,0,1,0,5,0,0,65,6.2,520,10:11
 379,Steven Kampfer,22,BOS,D,38,5,5,10,9,12,5,0,0,1,2,3,0,57,8.8,674,17:44
 380,Evander Kane,19,ATL,C,73,19,24,43,-12,68,15,4,0,2,20,4,0,234,8.1,1304,17:52
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 381,Patrick Kane,22,CHI,RW,73,27,46,73,7,28,22,5,0,2,27,19,0,216,12.5,1408,19:17
 382,Erik Karlsson,20,OTT,D,75,13,32,45,-30,50,9,4,0,4,14,17,1,182,7.1,1764,23:31
 383,Matt Kassian,24,MIN,LW,4,0,0,0,-1,12,0,0,0,0,0,0,0,1,0.0,22,5:29
@@ -437,8 +399,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 398,Rob Klinkhammer,24,CHI,LW,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,12,11:36
 399,Mike Knuble,38,WSH,RW,79,24,16,40,10,36,16,7,1,1,10,5,1,203,11.8,1413,17:53
 400,Chuck Kobasew,28,MIN,RW,63,9,7,16,-6,19,9,0,0,1,7,0,0,74,12.2,746,11:50
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 401,David Koci,29,COL,D,35,1,0,1,-5,80,1,0,0,0,0,0,0,9,11.1,143,4:05
 402,Mikko Koivu,27,MIN,C,71,17,45,62,4,50,9,7,1,3,30,15,0,191,8.9,1384,19:29
 403,Saku Koivu,36,ANA,C,75,15,30,45,-8,36,11,4,0,3,19,11,0,104,14.4,1435,19:08
@@ -459,8 +419,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 418,Marcus Kruger,20,CHI,C,7,0,0,0,-4,4,0,0,0,0,0,0,0,7,0.0,84,11:58
 419,Filip Kuba,34,OTT,D,64,2,14,16,-26,16,2,0,0,1,6,7,1,76,2.6,1327,20:44
 420,Tomas Kubalik,20,CBJ,RW,4,0,2,2,-3,0,0,0,0,0,2,0,0,5,0.0,59,14:45
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 421,Pavel Kubina,33,TBL,D,79,4,19,23,2,62,3,1,0,2,15,4,0,78,5.1,1519,19:14
 422,Arturs Kulda,22,ATL,D,2,0,0,0,-2,2,0,0,0,0,0,0,0,3,0.0,22,11:07
 423,Nikolai Kulemin,24,TOR,LW,82,30,27,57,7,26,24,5,1,5,19,8,0,173,17.3,1421,17:19
@@ -481,8 +439,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 438,Vincent Lecavalier,30,TBL,C,65,25,29,54,-5,43,13,12,0,5,13,16,0,210,11.9,1200,18:27
 439,Nick Leddy,19,CHI,D,46,4,3,7,-3,4,4,0,0,0,2,1,0,37,10.8,658,14:19
 440,Brian Lee,23,OTT,D,50,0,3,3,-10,24,0,0,0,0,3,0,0,35,0.0,865,17:17
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 441,David Legwand,30,NSH,C,64,17,24,41,13,24,15,0,2,3,20,4,0,130,13.1,1204,18:48
 442,Ville Leino,27,PHI,LW,81,19,34,53,14,22,14,5,0,2,28,6,0,117,16.2,1297,16:01
 443,Jordan Leopold,30,BUF,D,71,13,22,35,-11,36,8,5,0,1,16,6,0,134,9.7,1656,23:20
@@ -503,8 +459,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 458,Ben Lovejoy,26,PIT,D,47,3,14,17,11,48,3,0,0,0,12,1,1,60,5.0,705,15:00
 459,Milan Lucic,22,BOS,LW,79,30,32,62,28,121,25,5,0,7,23,9,0,173,17.3,1310,16:35
 460,Brad Lukowich,34,DAL,D,5,0,0,0,2,0,0,0,0,0,0,0,0,3,0.0,51,10:16
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 461,Mike Lundin,26,TBL,D,69,1,11,12,-3,12,1,0,0,0,11,0,0,55,1.8,1408,20:24
 462,Joffrey Lupul,27,TOT,C,54,14,17,31,-11,33,10,4,0,2,8,9,0,129,10.9,844,15:37
 463,Toni Lydman,33,ANA,D,78,3,22,25,32,42,3,0,0,0,20,2,0,99,3.0,1729,22:10
@@ -525,8 +479,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 478,Paul Mara,31,TOT,D,53,1,5,6,1,88,1,0,0,1,5,0,0,50,2.0,969,18:17
 479,Brad Marchand,22,BOS,C,77,21,20,41,25,51,14,2,5,2,18,1,1,149,14.1,1077,13:59
 480,Todd Marchant,37,ANA,C,79,1,7,8,-18,26,1,0,0,0,5,1,1,63,1.6,1050,13:17
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 481,Andrei Markov,32,MTL,D,7,1,2,3,2,4,1,0,0,1,1,1,0,20,5.0,160,22:55
 482,Patrick Marleau,31,SJS,C,82,37,36,73,-3,16,24,11,2,9,20,15,1,279,13.3,1705,20:47
 483,Matt Martin,21,NYI,LW,68,5,9,14,-13,147,5,0,0,1,8,0,1,60,8.3,745,10:57
@@ -547,8 +499,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 498,Jay McClement,27,TOT,C,80,7,13,20,-21,30,6,1,0,1,12,0,1,127,5.5,1335,16:42
 499,Cody McCormick,27,BUF,C,81,8,12,20,2,142,8,0,0,1,11,1,0,104,7.7,887,10:57
 500,Ryan McDonagh,21,NYR,D,40,1,8,9,16,14,1,0,0,1,6,0,2,27,3.7,750,18:44
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 501,Andy McDonald,33,STL,C,58,20,30,50,18,26,14,5,1,3,18,12,0,180,11.1,1162,20:02
 502,Jamie McGinn,22,SJS,LW,49,1,5,6,-6,33,1,0,0,0,5,0,0,63,1.6,568,11:35
 503,Frazer McLaren,23,SJS,LW,9,0,0,0,-1,22,0,0,0,0,0,0,0,1,0.0,38,4:15
@@ -569,8 +519,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 518,Brad Mills,27,NJD,C,4,1,0,1,1,5,1,0,0,0,0,0,0,6,16.7,33,8:17
 519,John Mitchell,26,TOR,C,23,2,1,3,-7,12,1,1,0,1,1,0,0,28,7.1,288,12:31
 520,Torrey Mitchell,26,SJS,C,66,9,14,23,10,46,9,0,0,1,14,0,0,116,7.8,881,13:21
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 521,Willie Mitchell,33,LAK,D,57,5,5,10,4,21,4,0,1,1,5,0,0,59,8.5,1243,21:49
 522,Mike Modano*,40,DET,C,40,4,11,15,-4,8,3,1,0,0,6,5,0,79,5.1,498,12:27
 523,Fredrik Modin,36,TOT,LW,40,7,3,10,-14,14,6,0,1,0,3,0,0,54,13.0,464,11:36
@@ -591,8 +539,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 538,Mike Mottau,32,NYI,D,20,0,3,3,-12,8,0,0,0,0,2,1,0,21,0.0,407,20:20
 539,Matt Moulson,27,NYI,LW,82,31,22,53,-10,24,22,9,0,3,16,6,0,237,13.1,1547,18:52
 540,Chris Mueller,24,NSH,C,15,0,3,3,0,2,0,0,0,0,3,0,0,7,0.0,130,8:38
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 541,Marcel Mueller,22,TOR,C,3,0,0,0,0,2,0,0,0,0,0,0,0,5,0.0,30,10:07
 542,Andrew Murray,29,CBJ,C,29,4,4,8,2,4,4,0,0,1,3,0,1,48,8.3,330,11:23
 543,Douglas Murray,30,SJS,D,73,1,13,14,5,44,1,0,0,0,12,1,0,102,1.0,1432,19:37
@@ -613,8 +559,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 558,Matt Niskanen,24,TOT,D,63,1,9,10,-3,50,1,0,0,0,4,5,0,77,1.3,1041,16:32
 559,Andreas Nodl,23,PHI,RW,67,11,11,22,14,16,9,1,1,2,11,0,0,100,11.0,889,13:16
 560,Maxim Noreau,23,MIN,D,5,0,0,0,-1,0,0,0,0,0,0,0,0,8,0.0,71,14:17
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 561,Eric Nystrom,27,MIN,LW,82,4,8,12,-16,30,3,1,0,0,8,0,0,83,4.8,1091,13:19
 562,Jim O'Brien,22,OTT,C,6,0,0,0,-3,2,0,0,0,0,0,0,0,11,0.0,58,9:40
 563,Shane O'Brien,27,NSH,D,80,2,7,9,1,83,2,0,0,0,7,0,0,50,4.0,1369,17:07
@@ -635,8 +579,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 578,Brooks Orpik,30,PIT,D,63,1,12,13,12,66,1,0,0,0,9,0,3,56,1.8,1316,20:53
 579,Colton Orr,28,TOR,RW,46,2,0,2,-1,128,2,0,0,1,0,0,0,14,14.3,233,5:04
 580,Jed Ortmeyer,32,MIN,RW,4,0,0,0,-1,2,0,0,0,0,0,0,0,5,0.0,38,9:24
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 581,T.J. Oshie,24,STL,C,49,12,22,34,10,15,8,3,1,3,16,6,0,103,11.7,940,19:11
 582,Steve Ott,28,DAL,C,82,12,20,32,-9,183,7,3,2,4,11,7,2,120,10.0,1407,17:09
 583,Alex Ovechkin,25,WSH,LW,79,32,53,85,24,41,25,7,0,11,36,17,0,367,8.7,1688,21:22
@@ -657,8 +599,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 598,Scott Parse,26,LAK,C,5,1,3,4,5,0,1,0,0,0,3,0,0,6,16.7,69,13:47
 599,Joe Pavelski,26,SJS,C,74,20,46,66,10,24,8,11,1,5,27,17,2,282,7.1,1454,19:39
 600,Theo Peckham,23,EDM,D,71,3,10,13,-5,198,3,0,0,0,10,0,0,41,7.3,1320,18:36
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 601,Rod Pelley,26,NJD,C,74,3,7,10,-9,27,2,1,0,0,7,0,0,88,3.4,874,11:48
 602,Dustin Penner,28,TOT,RW,81,23,22,45,-12,47,16,6,1,3,20,2,0,173,13.3,1468,18:07
 603,Joel Perrault,27,VAN,C,7,0,0,0,-1,0,0,0,0,0,0,0,0,3,0.0,50,7:12
@@ -679,8 +619,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 618,Joni Pitkanen,27,CAR,D,72,5,30,35,-2,60,4,1,0,1,19,11,0,144,3.5,1802,25:01
 619,Alex Plante,21,EDM,D,3,0,0,0,-2,11,0,0,0,0,0,0,0,5,0.0,45,15:03
 620,Tomas Plekanec,28,MTL,C,77,22,35,57,8,60,18,3,1,4,19,15,1,227,9.7,1559,20:15
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 621,Roman Polak,24,STL,D,55,3,9,12,-4,33,3,0,0,1,9,0,0,54,5.6,1098,19:57
 622,Jason Pominville,28,BUF,RW,73,22,30,52,1,15,16,5,1,2,21,9,0,215,10.2,1325,18:09
 623,Alexei Ponikarovsky,30,LAK,LW,61,5,10,15,1,36,4,1,0,1,8,2,0,94,5.3,769,12:36
@@ -701,8 +639,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 638,Teddy Purcell,25,TBL,RW,81,17,34,51,5,10,14,3,0,1,16,18,0,196,8.7,1142,14:06
 639,Taylor Pyatt,29,PHX,LW,76,18,13,31,11,27,16,2,0,6,11,2,0,126,14.3,1178,15:30
 640,Tom Pyatt,23,MTL,C,61,2,5,7,-1,9,2,0,0,0,3,0,2,65,3.1,649,10:38
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 641,Kyle Quincey,25,COL,D,21,0,1,1,-5,18,0,0,0,0,1,0,0,39,0.0,411,19:35
 642,Brian Rafalski,37,DET,D,63,4,44,48,11,22,4,0,0,0,27,17,0,106,3.8,1287,20:25
 643,Rhett Rakhshani,22,NYI,RW,2,0,0,0,-1,0,0,0,0,0,0,0,0,2,0.0,23,11:43
@@ -723,8 +659,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 658,Patrick Rissmiller,32,TOT,C,10,0,1,1,-1,0,0,0,0,0,1,0,0,14,0.0,104,10:22
 659,Mattias Ritola,23,TBL,C,31,4,4,8,-5,11,4,0,0,2,4,0,0,42,9.5,312,10:04
 660,Craig Rivet,36,TOT,D,37,2,2,4,-12,35,2,0,0,0,2,0,0,33,6.1,543,14:41
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 661,Stephane Robidas,33,DAL,D,81,5,25,30,-7,67,4,1,0,1,9,14,2,106,4.7,1987,24:32
 662,Bryan Rodney,26,CAR,D,3,0,0,0,0,2,0,0,0,0,0,0,0,3,0.0,26,8:44
 663,Brian Rolston,37,NJD,C,65,14,20,34,-6,34,8,6,0,4,14,5,1,168,8.3,1144,17:36
@@ -745,8 +679,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 678,Sami Salo,36,VAN,D,27,3,4,7,-3,14,2,1,0,0,2,2,0,39,7.7,549,20:21
 679,Jerome Samson,23,CAR,RW,23,0,2,2,0,0,0,0,0,0,2,0,0,28,0.0,158,6:51
 680,Sergei Samsonov,32,TOT,LW,78,13,27,40,-2,14,9,4,0,1,18,9,0,123,10.6,1205,15:27
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 681,Mikael Samuelsson,34,VAN,RW,75,18,32,50,8,36,13,5,0,2,18,14,0,215,8.4,1247,16:38
 682,Mike Santorelli,25,FLA,C,82,20,21,41,-17,20,14,5,1,1,14,7,0,193,10.4,1368,16:41
 683,Cory Sarich,32,CGY,D,76,4,13,17,11,75,4,0,0,1,13,0,0,75,5.3,1359,17:53
@@ -767,8 +699,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 698,Nick Schultz,28,MIN,D,74,3,14,17,-4,38,3,0,0,0,12,1,1,46,6.5,1496,20:13
 699,John Scott,28,CHI,D,40,0,1,1,0,72,0,0,0,0,1,0,0,15,0.0,250,6:15
 700,Rob Scuderi,32,LAK,D,82,2,13,15,1,16,2,0,0,1,13,0,0,46,4.3,1664,20:17
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 701,Brent Seabrook,25,CHI,D,82,9,39,48,0,47,4,5,0,1,22,15,2,135,6.7,2000,24:23
 702,Daniel Sedin,30,VAN,LW,82,41,63,104,30,32,23,18,0,10,39,24,0,266,15.4,1521,18:33
 703,Henrik Sedin,30,VAN,C,82,19,75,94,26,40,11,8,0,4,48,27,0,157,12.1,1579,19:16
@@ -789,8 +719,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 718,Sergei Shirokov,24,VAN,LW,2,1,0,1,1,0,1,0,0,0,0,0,0,6,16.7,21,10:18
 719,Jon Sim,33,NYI,LW,34,1,3,4,-10,22,1,0,0,0,2,1,0,38,2.6,388,11:24
 720,Wayne Simmonds,22,LAK,RW,80,14,16,30,-2,75,13,1,0,3,16,0,0,117,12.0,1076,13:27
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 721,Shane Sims,22,NYI,D,1,0,0,0,0,0,0,0,0,0,0,0,0,0,,7,6:34
 722,Fredrik Sjostrom,27,TOR,RW,66,2,3,5,-5,14,2,0,0,0,3,0,0,62,3.2,740,11:13
 723,Jack Skille,23,TOT,RW,62,8,11,19,-9,29,7,1,0,1,11,0,0,154,5.2,739,11:55
@@ -811,8 +739,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 738,Nick Spaling,22,NSH,C,74,8,6,14,-10,20,7,1,0,2,6,0,0,75,10.7,1031,13:56
 739,Jason Spezza,27,OTT,C,62,21,36,57,-7,28,14,7,0,2,25,10,1,188,11.2,1252,20:12
 740,Jared Spurgeon,21,MIN,D,53,4,8,12,-1,2,2,2,0,1,4,4,0,38,10.5,799,15:04
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 741,Martin St. Louis,35,TBL,RW,82,31,68,99,0,12,27,4,0,7,31,37,0,254,12.2,1720,20:59
 742,Eric Staal,26,CAR,C,81,33,43,76,-10,72,18,12,3,8,26,17,0,296,11.1,1777,21:56
 743,Jordan Staal,22,PIT,C,42,11,19,30,7,24,8,3,0,4,13,4,2,91,12.1,897,21:21
@@ -833,8 +759,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 758,Brett Sterling,26,PIT,LW,7,3,2,5,1,16,2,1,0,0,1,1,0,14,21.4,106,15:07
 759,Anthony Stewart,26,ATL,C,80,14,25,39,-10,55,9,5,0,2,20,5,0,141,9.9,1198,14:58
 760,Chris Stewart,23,TOT,RW,62,28,25,53,-6,53,16,12,0,5,21,4,0,162,17.3,1084,17:29
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 761,Cory Stillman,37,TOT,LW,65,12,27,39,5,24,9,3,0,2,18,9,0,116,10.3,1099,16:55
 762,Ryan Stoa,23,COL,C,25,2,2,4,-4,20,2,0,0,1,0,2,0,45,4.4,334,13:21
 763,Jarret Stoll,28,LAK,C,82,20,23,43,-6,42,15,4,1,5,13,8,2,187,10.7,1407,17:10
@@ -855,8 +779,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 778,Ryan Suter,26,NSH,D,70,4,35,39,20,54,3,1,0,1,18,16,1,115,3.5,1764,25:12
 779,Brian Sutherby,28,DAL,C,51,2,2,4,-10,58,2,0,0,0,2,0,0,32,6.3,378,7:25
 780,Brandon Sutter,21,CAR,C,82,14,15,29,13,25,13,1,0,3,12,2,1,145,9.7,1382,16:51
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 781,Brett Sutter,23,TOT,C,5,0,1,1,-1,5,0,0,0,0,0,0,1,3,0.0,45,8:55
 782,Andy Sutton,35,ANA,D,39,0,4,4,1,87,0,0,0,0,1,1,2,31,0.0,575,14:45
 783,Marek Svatos,28,TOT,RW,28,4,4,8,0,10,4,0,0,0,4,0,0,50,8.0,328,11:43
@@ -877,8 +799,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 798,Nate Thompson,26,TBL,C,79,10,15,25,-6,29,9,0,1,2,14,1,0,123,8.1,1192,15:05
 799,Chris Thorburn,27,ATL,C,82,9,10,19,-4,77,7,2,0,0,9,1,0,114,7.9,1131,13:48
 800,Joe Thornton,31,SJS,C,80,21,49,70,4,47,10,9,2,3,25,24,0,149,14.1,1590,19:52
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 801,Shawn Thornton,33,BOS,RW,79,10,10,20,8,122,10,0,0,2,10,0,0,151,6.6,796,10:05
 802,Andreas Thuresson,23,NSH,RW,3,0,0,0,-1,2,0,0,0,0,0,0,0,2,0.0,30,10:09
 803,Scott Timmins,21,FLA,C,19,1,0,1,-8,8,1,0,0,0,0,0,0,13,7.7,206,10:49
@@ -899,8 +819,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 818,Chris VandeVelde,23,EDM,C,12,0,2,2,-6,12,0,0,0,0,2,0,0,16,0.0,207,17:17
 819,Thomas Vanek,27,BUF,LW,80,32,41,73,2,24,21,11,0,5,24,17,0,238,13.4,1388,17:21
 820,Alexander Vasyunov,22,NJD,LW,18,1,4,5,0,0,1,0,0,0,4,0,0,18,5.6,207,11:29
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 821,Antoine Vermette,28,CBJ,C,82,19,28,47,0,60,15,3,1,3,21,7,0,183,10.4,1543,18:49
 822,Mike Vernace,24,TBL,D,10,0,1,1,-2,2,0,0,0,0,1,0,0,6,0.0,87,8:42
 823,Kris Versteeg,24,TOT,RW,80,21,25,46,-9,53,14,6,1,0,17,8,0,180,11.7,1418,17:44
@@ -921,8 +839,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 838,Francis Wathier,26,DAL,LW,3,0,0,0,-2,0,0,0,0,0,0,0,0,0,,12,3:55
 839,Mike Weaver,32,FLA,D,82,2,11,13,1,34,2,0,0,1,10,1,0,53,3.8,1706,20:48
 840,Mike Weber,23,BUF,D,58,4,13,17,13,69,4,0,0,0,13,0,0,53,7.5,980,16:54
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 841,Shea Weber,25,NSH,D,82,16,32,48,7,56,9,6,1,3,21,11,0,254,6.3,2076,25:19
 842,Yannick Weber,22,MTL,D,41,1,10,11,0,14,1,0,0,0,5,5,0,63,1.6,679,16:34
 843,Doug Weight,40,NYI,C,18,2,7,9,-3,10,1,1,0,0,3,4,0,26,7.7,315,17:32
@@ -943,8 +859,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 858,Roman Wick,25,OTT,RW,7,0,0,0,-4,0,0,0,0,0,0,0,0,4,0.0,60,8:38
 859,Dennis Wideman,27,TOT,D,75,10,30,40,-19,39,1,9,0,1,17,13,0,160,6.3,1799,23:59
 860,Patrick Wiercioch,20,OTT,D,8,0,2,2,0,4,0,0,0,0,1,1,0,3,0.0,111,13:54
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 861,Jason Williams,30,DAL,C,27,2,3,5,-2,6,2,0,0,1,2,1,0,18,11.1,219,8:07
 862,Jeremy Williams,27,NYR,RW,1,0,0,0,0,0,0,0,0,0,0,0,0,0,,4,3:43
 863,Justin Williams,29,LAK,RW,73,22,35,57,14,59,17,5,0,3,27,8,0,213,10.3,1259,17:15
@@ -965,8 +879,6 @@ Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 878,Keith Yandle,24,PHX,D,82,11,48,59,12,68,8,3,0,0,24,23,1,199,5.5,1999,24:23
 879,Brandon Yip,25,COL,RW,71,12,10,22,-22,54,8,3,1,1,8,2,0,127,9.4,975,13:44
 880,Nolan Yonkman,29,PHX,D,16,0,1,1,5,39,0,0,0,0,1,0,0,8,0.0,194,12:08
-,Scoring Stats,Goals,Assists,,,Ice Time
-Rk,Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI
 881,Travis Zajac,25,NJD,C,82,13,31,44,-6,24,10,2,1,1,22,8,1,173,7.5,1622,19:47
 882,Greg Zanon,30,MIN,D,82,0,7,7,-5,48,0,0,0,0,5,1,1,55,0.0,1767,21:33
 883,John Zeiler,28,LAK,RW,4,0,0,0,-1,0,0,0,0,0,0,0,0,1,0.0,22,5:36
